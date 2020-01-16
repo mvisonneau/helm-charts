@@ -1,6 +1,6 @@
 # mvisonneau/charts
 
-# Managed manually
+https://github.com/mvisonneau/charts
 
 ```bash
 ~$ helm package <chart_path>
