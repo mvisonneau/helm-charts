@@ -1,0 +1,220 @@
+# Default values
+
+# Application specific names
+# Please define at least the 'nameOverride' variable when using this chart
+nameOverride:
+#fullNameOverride:
+
+##
+# Pods configuration
+##
+
+pods:
+  # Mechanism to use to schedule pods
+  # Can either be 'deployment', 'statefulset' or 'daemonset'
+  controller: deployment
+
+  # Container image to use
+  image:
+    name:
+    tag:
+    pullPolicy: IfNotPresent
+
+  # If you are not using HPAs you can also statically define the amount of replicas
+  # Ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#replicas
+  replicas:
+
+  # Specify revisionHistoryLimit (deployments only)
+  # Ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#clean-up-policy
+  revisionHistoryLimit: 3
+
+  # The update strategy to apply for the deployment, statefulset or daemonset
+  ##
+  strategy: {}
+  #  rollingUpdate:
+  #    maxUnavailable: 1
+  #  type: RollingUpdate
+
+  # Custom command to use for the container
+  command: []
+
+  # Custom arguments to use for the container
+  args: []
+
+  # Additional labels and annotations for the deployment, statefulset or daemonset
+  labels: {}
+  #  key: value
+  annotations: {}
+  #  key: value
+
+  # Additional labels and annotations for the pods
+  podLabels: {}
+  #  key: value
+  podAnnotations: {}
+  #  key: value
+
+  # Healthcheck probes
+  livenessProbe: {}
+  readinessProbe: {}
+
+  # Resources allocation for the containers
+  resources: {}
+    # limits:
+    #   cpu: 500m
+    #   memory: 512Mi
+    # requests:
+    #   cpu: 500m
+    #   memory: 512Mi
+
+  ports:
+    - containerPort: 8080
+
+  # Node labels for pod assignment
+  # Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  nodeSelector: {}
+
+  ## Node tolerations for server scheduling to nodes with taints
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+  ##
+  tolerations: []
+  #  - key: "key"
+  #    operator: "Equal|Exists"
+  #    value: "value"
+  #    effect: "NoSchedule|PreferNoSchedule|NoExecute(1.6 only)"
+
+  # DNS Policy
+  dnsPolicy: ClusterFirst
+
+  ## Optional array of imagePullSecrets containing private registry credentials
+  ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+  imagePullSecrets: []
+  # - name: secretName
+
+  # Affinity configuration
+  affinity:
+    # This allows you to automatically define anti-affinity rules
+    antiAffinity:
+      enabled: false
+      type: hard  # Can be either 'hard' or 'soft'
+      topologyKey: kubernetes.io/hostname
+
+    rules: {}
+
+  # Environment variables
+  env: []
+    # - name: key
+    #   value: val
+    # - name: other_key
+    #    valueFrom:
+    #      configMapKeyRef:
+    #        name: config
+    #        key: nice-key
+
+  envFrom: []
+    # - configMapRef:
+    #     name: config
+    # - secretRef:
+    #     name: config
+
+  # Volumes and mounts
+  volumes: []
+    # - name: storage
+    #   emptyDir: {}
+
+  volumeMounts: []
+    # - name: storage
+    #   mountPath: /mnt/storage
+
+  # Security
+  securityContext: {}
+
+  # Init containers configuration
+  initContainers: []
+
+  # Additional containers for the pods
+  additionalContainers: []
+
+##
+# Image Pull Credentials
+##
+
+# Automatically create a secret with the credentials and use it
+# Cannot be used in conjunction of pods.imagePullSecrets
+imageCredentials: {}
+  # registry: quay.io
+  # username: someone
+  # password: sillyness
+
+##
+# Horizontal Pod Autoscaler configuration
+##
+
+# Only works for 'deployments' and 'statefulsets'
+horizontalPodAutoscaler:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 2
+  targetAverageCPUUtilization: 60
+
+##
+# Service configuration
+##
+
+service:
+  enabled: true
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+
+##
+# Ingress configuration
+##
+
+ingress:
+  enabled: false
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  path: /
+  servicePort: http
+  hosts:
+    - example.com
+  tls:
+    - hosts:
+        - example.com
+
+##
+# Pod Disruption Budget configuration
+##
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+##
+# ConfigMaps management
+##
+
+configMaps: {}
+  # foo:
+  #   FOO: bar
+
+##
+# Secrets management
+##
+
+secrets: {}
+  # super_secret:
+  #   key: sensitive_value
+  # dockerconfigjson/image-pull: |
+  #   .dockerconfigjson: {}
+
+##
+# Service account management
+##
+
+serviceAccount:
+  create: false
+  name: default

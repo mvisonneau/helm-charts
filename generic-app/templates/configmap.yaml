@@ -1,0 +1,14 @@
+{{- range $name, $data := .Values.configMaps }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "app.fullname" $ }}-{{ $name }}
+  labels:
+    app.kubernetes.io/name: {{ include "app.name" $ }}
+    app.kubernetes.io/version: {{ $.Chart.AppVersion }}
+    helm.sh/chart: {{ include "app.chart" $ }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}
+    app.kubernetes.io/managed-by: {{ $.Release.Service }}
+data: {{ toYaml $data | nindent 2 }}
+{{- end }}
