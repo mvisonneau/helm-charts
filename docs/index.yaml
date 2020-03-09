@@ -3,7 +3,7 @@ entries:
   generic-app:
   - apiVersion: v1
     appVersion: 0.0.0
-    created: "2020-01-16T17:31:56.692198Z"
+    created: "2020-03-09T18:24:55.042224Z"
     description: Generic Application Chart
     digest: c47e2929a35ec420149a3e51d4c548f9cc93e09158f98561a72653995437848d
     home: https://github.com/mvisonneau/charts
@@ -11,6 +11,6 @@ entries:
     sources:
     - https://github.com/mvisonneau/charts/tree/master/generic-app
     urls:
-    - generic-app-0.0.1.tgz
+    - https://charts.visonneau.fr/generic-app-0.0.1.tgz
     version: 0.0.1
-generated: "2020-01-16T17:31:56.691433Z"
+generated: "2020-03-09T18:24:55.039559Z"
