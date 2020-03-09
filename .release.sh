@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
+git checkout master -- charts/
+cd charts/
+
 helm repo add mvisonneau https://charts.visonneau.fr
 helm repo update
-
-cd charts/
 
 for CHART in $(find * -maxdepth 0 -type d)
 do
@@ -18,5 +19,5 @@ do
   fi
 done
 
-cd ../docs
+cd ..
 helm repo index --url https://charts.visonneau.fr . 
