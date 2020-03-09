@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-git checkout master -- charts/
+git checkout test -- charts/
 cd charts/
 
 helm repo add mvisonneau https://charts.visonneau.fr
@@ -14,7 +14,7 @@ do
   then
     echo "${CHART} chart version hasn't been bumped (${VERSION})."
   else
-    helm package -u ${CHART} -d ../docs
+    helm package -u ${CHART} -d ..
     echo "Released ${CHART} version ${VERSION}."
   fi
 done
