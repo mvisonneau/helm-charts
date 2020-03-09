@@ -19,4 +19,4 @@ do
 done
 
 cd ../docs
-helm repo index . --url https://charts.visonneau.fr
+helm repo index --url https://charts.visonneau.fr . 
