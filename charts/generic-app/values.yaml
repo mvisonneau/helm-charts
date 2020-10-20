@@ -3,7 +3,7 @@
 # Application specific names
 # Please define at least the 'nameOverride' variable when using this chart
 nameOverride:
-#fullNameOverride:
+# fullNameOverride:
 
 ##
 # Pods configuration

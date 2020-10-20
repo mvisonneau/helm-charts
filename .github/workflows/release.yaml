@@ -1,0 +1,29 @@
+---
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Add dependency chart repos
+        run: |
+          helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+          helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.0.0
+        env:
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}

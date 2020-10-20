@@ -1,20 +1,8 @@
-NAME          := charts
-REPOSITORY    := mvisonneau/$(NAME)
 .DEFAULT_GOAL := help
-
-CHARTS := $(shell find charts/* -type d -maxdepth 0)
 
 .PHONY: lint
 lint: ## Lint the charts
-	@for chart in $(CHARTS); do helm lint $$chart; done
-
-.PHONY: release
-release: ## Release the charts
-	./.release.sh
-
-.PHONY: sign-drone
-sign-drone: ## Sign Drone CI configuration
-	drone sign $(REPOSITORY) --save
+	ct lint --config .ct.yml --all
 
 .PHONY: help
 help: ## Displays this help

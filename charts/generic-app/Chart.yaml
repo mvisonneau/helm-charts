@@ -6,3 +6,6 @@ appVersion: 0.0.0
 home: https://github.com/mvisonneau/charts
 sources:
   - https://github.com/mvisonneau/charts/tree/master/generic-app
+maintainers:
+  - name: mvisonneau
+    email: maxime.visonneau@gmail.com
