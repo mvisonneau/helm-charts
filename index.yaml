@@ -1,0 +1,19 @@
+apiVersion: v1
+entries:
+  generic-app:
+  - apiVersion: v1
+    appVersion: 0.0.0
+    created: "2020-10-20T11:30:02.421697439Z"
+    description: Generic Application Chart
+    digest: 5d4585575d2195440ed60fed02c02358bb541275e3551a831139f7ddc9fca458
+    home: https://github.com/mvisonneau/charts
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: generic-app
+    sources:
+    - https://github.com/mvisonneau/charts/tree/master/generic-app
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/generic-app-0.0.1/generic-app-0.0.1.tgz
+    version: 0.0.1
+generated: "2020-10-20T11:30:01.982384876Z"
