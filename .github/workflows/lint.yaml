@@ -2,7 +2,7 @@
 on: pull_request
 
 jobs:
-  lint:
+  charts:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,3 +26,34 @@ jobs:
         with:
           config: .ct.yml
           command: install
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run helm-docs
+        run: .github/helm-docs.sh
+
+  kubeval:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # When changing versions here, check that the version exists at: https://github.com/instrumenta/kubernetes-json-schema
+        k8s:
+          - v1.16.4
+          - v1.17.4
+          - v1.18.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Add dependency chart repos
+        run: |
+          helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+      - name: Run kubeval
+        env:
+          KUBERNETES_VERSION: ${{ matrix.k8s }}
+        run: .github/kubeval.sh

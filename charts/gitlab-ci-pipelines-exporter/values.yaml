@@ -1,0 +1,183 @@
+---
+# replicas -- amount of desired pod(s) replica(s)
+replicas: 1
+
+image:
+  # image.repository -- image repository
+  repository: mvisonneau/gitlab-ci-pipelines-exporter
+  
+  # image.tag -- image tag
+  # tag: <default to chart version>
+
+  # image.repository -- image pullPolicy
+  pullPolicy: IfNotPresent  
+
+# labels -- additional labels for the deployment resource
+labels: {}
+
+# annotations -- additional annotations for the deployment resource
+annotations: {}
+
+# podLabels -- additional labels for the pods
+podLabels: {}
+
+# podAnnotations -- additional annotations for the pods
+podAnnotations: {}
+
+service:
+  # type -- service type
+  type: ClusterIP
+
+  # port -- service port
+  port: 80
+
+  # labels -- additional labels for the service
+  labels: {}
+
+  # annotations -- additional annotations for the service
+  annotations: {}
+
+# resources -- resources to allocate to the pods
+resources: {}
+#  limits:
+#    cpu: 50m
+#    memory: 64Mi
+#  requests:
+#    cpu: 50m
+#    memory: 64Mi
+
+strategy:
+  # strategy -- deployment strategy type
+  type: RollingUpdate
+
+## Liveness and Readiness probes
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+livenessProbe:
+  httpGet:
+    path: /health/live
+    port: 8080
+
+readinessProbe:
+  httpGet:
+    path: /health/ready
+    port: 8080
+  initialDelaySeconds: 5
+  timeoutSeconds: 5
+  failureThreshold: 3
+  periodSeconds: 30
+
+# nodeSelector -- node selector for pod assignment
+## ref: https://kubernetes.io/docs/user-guide/node-selection/
+nodeSelector: {}
+
+# tolerations -- tolerations for pod assignment
+## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+tolerations: []
+
+# affinity -- affinity for pod assignment
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+affinity: {}
+
+# securityContext -- security context to apply to the pods
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context
+securityContext:
+  # runAsUser: 65534  # run as nobody user
+
+# args -- arguments for the exporter binary
+args:
+  - --config
+  - /etc/config.yml
+  - --log-format
+  - json
+
+# config -- configuration of the exporter
+config: {}
+  # # Full configuration syntax reference available here:
+  # # https://github.com/mvisonneau/gitlab-ci-pipelines-exporter/blob/master/docs/configuration_syntax.md
+  # gitlab:
+  #   url: https://gitlab.example.com
+  #   # You can also configure the token using --gitlab-token
+  #   # or the $GCPE_GITLAB_TOKEN environment variable
+  #   token: <your_token>
+  # projects:
+  #   - name: foo/project
+  #   - name: bar/project
+  # wildcards:
+  #   - owner:
+  #       name: foo
+  #       kind: group
+
+# envVariables -- environment variables for the container
+envVariables: []
+  # - name: GCPE_LOG_FORMAT
+  #   value: json
+  # - name: GCPE_LOG_LEVEL
+  #   value: debug
+  # - name: GCPE_GITLAB_TOKEN
+  #   value: "<your-gitlab-token>"
+
+## Manage a ServiceMonitor resource to automatically configure the endpoint
+## through the Prometheus operator: https://github.com/coreos/prometheus-operator
+serviceMonitor:
+  # serviceMonitor.enabled -- deploy a serviceMonitor resource
+  enabled: false
+
+  # serviceMonitor.scrapeInterval -- prometheus probes interval
+  scrapeInterval: 10s
+
+  # serviceMonitor.labels -- additional labels for the service monitor
+  labels: {}
+
+  # serviceMonitor.annotations -- additional annotations for the service monitor
+  annotations: {}
+
+## Spin up a redis pod using the bitnami chart
+## https://github.com/bitnami/charts/blob/master/bitnami/redis
+redis:
+  # redis.enabled -- deploy a redis statefulset
+  enabled: true
+
+  # redis.usePassword -- use a password to connect to a redis
+  usePassword: false
+
+  metrics:
+    # redis.metrics.enabled -- enable /metrics endpoint of the redis pods
+    enabled: false
+
+    serviceMonitor:
+      # redis.metrics.serviceMonitor.enabled -- deploy a serviceMonitor resource for the redis pods
+      enabled: false
+
+  cluster:
+    # redis.cluster.enabled -- deploy a redis in cluster mode
+    enabled: false
+  
+  master:
+    persistence:
+      # redis.master.persistence.enabled -- persist data
+      enabled: false
+
+## Ingress configuration (useful when looking to expose /webhook endpoint externally)
+ingress:
+  # ingress.enabled -- deploy a ingress to access the exporter pod(s) /webhook endpoint
+  enabled: false
+  
+  # ingress.annotations -- additional annotations for the ingress resource
+  annotations:
+    # kubernetes.io/ingress.class: nginx
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+  # ingress.path -- path on the exporter to point the root of the ingress
+  path: /webhook
+
+  # ingress.servicePort -- service port for the ingress
+  servicePort: http
+
+  # ingress.hosts -- ingress hosts
+  hosts:
+    - gcpe.example.com
+
+  # ingress.tls -- ingress tls hosts config
+  tls:
+    - hosts:
+        - gcpe.example.com
