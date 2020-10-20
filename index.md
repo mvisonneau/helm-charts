@@ -1,4 +1,4 @@
-https://github.com/mvisonneau/helm-charts
+[https://github.com/mvisonneau/helm-charts](https://github.com/mvisonneau/helm-charts)
 
 # Usage
 
