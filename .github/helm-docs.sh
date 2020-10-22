@@ -2,7 +2,7 @@
 
 # copied from / credits to https://github.com/DataDog/helm-charts/blob/master/.github/helm-docs.sh
 
-set -euo pipefail
+set -euox pipefail
 
 HELM_DOCS_VERSION="1.3.0"
 OS=$(uname)

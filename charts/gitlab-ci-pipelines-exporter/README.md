@@ -16,6 +16,12 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
 * <https://github.com/mvisonneau/helm-charts/tree/main/charts/gitlab-ci-pipelines-exporter>
 
+## Requirements
+
+| Repository | Name | Version |
+|------------|------|---------|
+| https://charts.bitnami.com/bitnami | redis | 11.0.7 |
+
 ## Values
 
 | Key | Type | Default | Description |

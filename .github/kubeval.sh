@@ -2,9 +2,9 @@
 
 # copied from / credits to https://github.com/DataDog/helm-charts/blob/master/.github/kubeval.sh
 
-set -euo pipefail
+set -euox pipefail
 
-CHART_DIRS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | grep '[cC]hart.yaml' | sed -e 's#/[Cc]hart.yaml##g')"
+CHART_DIRS="$(find ../charts/* -type d -maxdepth 0)"
 KUBEVAL_VERSION="0.15.0"
 SCHEMA_LOCATION="https://kubernetesjsonschema.dev/"
 
