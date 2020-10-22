@@ -1,5 +1,12 @@
 ---
-on: pull_request
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+  push:
+    branches:
+      - main
 
 jobs:
   charts:
