@@ -1,6 +1,21 @@
 apiVersion: v1
 entries:
   generic-app:
+  - apiVersion: v2
+    appVersion: 0.0.0
+    created: "2020-10-22T15:49:24.456048084Z"
+    description: Generic Application Chart
+    digest: e4f5ff2fb34000cc672bf311c6c9cc674c3bd28680bf5c4b4b5cb10401217987
+    home: https://github.com/mvisonneau/helm-charts
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: generic-app
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/generic-app
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/generic-app-0.0.4/generic-app-0.0.4.tgz
+    version: 0.0.4
   - apiVersion: v1
     appVersion: 0.0.0
     created: "2020-10-20T14:04:20.484353752Z"
@@ -44,6 +59,26 @@ entries:
     - https://github.com/mvisonneau/helm-charts/releases/download/generic-app-0.0.1/generic-app-0.0.1.tgz
     version: 0.0.1
   gitlab-ci-pipelines-exporter:
+  - apiVersion: v2
+    appVersion: 0.4.2
+    created: "2020-10-22T15:49:24.688179463Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.0.7
+    description: Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
+    digest: 5f20d80a3359a7732982b49e5272de81fb05ec3de84b6d186169ae14f0d4d02b
+    home: https://github.com/mvisonneau/gitlab-ci-pipelines-exporter
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: gitlab-ci-pipelines-exporter
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/gitlab-ci-pipelines-exporter
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/gitlab-ci-pipelines-exporter-0.0.2/gitlab-ci-pipelines-exporter-0.0.2.tgz
+    version: 0.0.2
   - apiVersion: v1
     appVersion: 0.4.1
     created: "2020-10-20T14:13:54.57420605Z"
