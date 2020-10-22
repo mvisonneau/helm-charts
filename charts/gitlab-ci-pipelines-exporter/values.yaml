@@ -5,12 +5,12 @@ replicas: 1
 image:
   # image.repository -- image repository
   repository: mvisonneau/gitlab-ci-pipelines-exporter
-  
+
   # image.tag -- image tag
   # tag: <default to chart version>
 
   # image.repository -- image pullPolicy
-  pullPolicy: IfNotPresent  
+  pullPolicy: IfNotPresent
 
 # labels -- additional labels for the deployment resource
 labels: {}
@@ -151,7 +151,7 @@ redis:
   cluster:
     # redis.cluster.enabled -- deploy a redis in cluster mode
     enabled: false
-  
+
   master:
     persistence:
       # redis.master.persistence.enabled -- persist data
@@ -161,7 +161,7 @@ redis:
 ingress:
   # ingress.enabled -- deploy a ingress to access the exporter pod(s) /webhook endpoint
   enabled: false
-  
+
   # ingress.annotations -- additional annotations for the ingress resource
   annotations:
     # kubernetes.io/ingress.class: nginx
