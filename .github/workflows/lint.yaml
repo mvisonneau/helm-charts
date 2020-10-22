@@ -22,7 +22,9 @@ jobs:
         id: lint
         uses: helm/chart-testing-action@v1.1.0
         with:
+          config: .ct.yml
           command: lint
+          target-branch: main
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0
