@@ -41,7 +41,7 @@ entries:
     sources:
     - https://github.com/mvisonneau/charts/tree/master/generic-app
     urls:
-    - https://charts.visonneau.fr/generic-app-0.0.1.tgz
+    - https://github.com/mvisonneau/helm-charts/releases/download/generic-app-0.0.1/generic-app-0.0.1.tgz
     version: 0.0.1
   gitlab-ci-pipelines-exporter:
   - apiVersion: v1
