@@ -4,7 +4,7 @@
 
 set -euox pipefail
 
-CHART_DIRS="$(find ../charts/* -type d -maxdepth 0)"
+CHART_DIRS="$(find charts/* -type d -maxdepth 0)"
 KUBEVAL_VERSION="0.15.0"
 SCHEMA_LOCATION="https://kubernetesjsonschema.dev/"
 
