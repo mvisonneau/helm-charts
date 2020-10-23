@@ -17,7 +17,6 @@ jobs:
         id: lint
         uses: helm/chart-testing-action@dev-v2
         with:
-          config: .ct.yml
           command: lint
 
       - name: Create kind cluster
@@ -27,7 +26,6 @@ jobs:
       - name: Run chart-testing (install)
         uses: helm/chart-testing-action@dev-v2
         with:
-          config: .ct.yml
           command: install
 
   helm-v3:
@@ -43,7 +41,6 @@ jobs:
         id: lint
         uses: helm/chart-testing-action@v1.1.0
         with:
-          config: .ct.yml
           command: lint
 
       - name: Create kind cluster
@@ -53,7 +50,6 @@ jobs:
       - name: Run chart-testing (install)
         uses: helm/chart-testing-action@v1.1.0
         with:
-          config: .ct.yml
           command: install
 
   docs:

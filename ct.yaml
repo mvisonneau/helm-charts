@@ -1,6 +1,6 @@
 ---
 chart-dirs:
   - charts
-remote: upstream
+remote: origin
 target-branch: main
 upgrade: true
