@@ -1,15 +1,38 @@
 ---
 on:
   pull_request:
-    types:
-      - opened
-      - edited
   push:
-    branches:
-      - main
 
 jobs:
-  charts:
+  helm-v2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Fetch history
+        run: git fetch --prune --unshallow
+
+      - name: Run chart-testing (lint)
+        id: lint
+        uses: helm/chart-testing-action@dev-v2
+        with:
+          config: .ct.yml
+          command: lint
+          target-branch: main
+
+      - name: Create kind cluster
+        uses: helm/kind-action@v1.0.0
+        if: steps.lint.outputs.changed == 'true'
+
+      - name: Run chart-testing (install)
+        uses: helm/chart-testing-action@dev-v2
+        with:
+          config: .ct.yml
+          command: install
+          target-branch: main
+
+  helm-v3:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
