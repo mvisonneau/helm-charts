@@ -19,7 +19,6 @@ jobs:
         with:
           config: .ct.yml
           command: lint
-          target-branch: main
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0
@@ -30,7 +29,6 @@ jobs:
         with:
           config: .ct.yml
           command: install
-          target-branch: main
 
   helm-v3:
     runs-on: ubuntu-latest
@@ -47,7 +45,6 @@ jobs:
         with:
           config: .ct.yml
           command: lint
-          target-branch: main
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0
@@ -58,7 +55,6 @@ jobs:
         with:
           config: .ct.yml
           command: install
-          target-branch: main
 
   docs:
     runs-on: ubuntu-latest
