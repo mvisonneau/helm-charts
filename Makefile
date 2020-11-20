@@ -17,6 +17,12 @@ lint-kubeval: ## Lint the charts templated kubernetes values
 		helm template --values $$chart/tests/kubeval.yaml $$chart | kubeval --strict --ignore-missing-schemas --kubernetes-version $(KUBERNETES_VERSION); \
 	done
 
+.PHONY: update-deps
+update-deps: ## Update dependencies of the charts
+	@for chart in $(CHARTS); do \
+		helm dependency update $$chart; \
+	done
+
 .PHONY: help
 help: ## Displays this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
