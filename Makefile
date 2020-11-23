@@ -4,7 +4,7 @@ CHARTS := $(shell find charts/* -type d -maxdepth 0)
 
 .PHONY: lint-charts
 lint-charts: ## Lint the charts syntax
-	ct lint --config .ct.yml --all
+	ct lint --all
 
 .PHONY: docs
 docs: ## Generate charts docs
