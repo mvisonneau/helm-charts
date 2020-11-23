@@ -91,6 +91,26 @@ entries:
   gitlab-ci-pipelines-exporter:
   - apiVersion: v1
     appVersion: v0.4.4
+    created: "2020-11-23T22:31:45.610794168Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.1
+    description: Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
+    digest: 7cb4d805316bb6894da81d4917e1fe8802d7d6ccc81e2c04f282bc4d71435d47
+    home: https://github.com/mvisonneau/gitlab-ci-pipelines-exporter
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: gitlab-ci-pipelines-exporter
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/gitlab-ci-pipelines-exporter
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/gitlab-ci-pipelines-exporter-0.0.7/gitlab-ci-pipelines-exporter-0.0.7.tgz
+    version: 0.0.7
+  - apiVersion: v1
+    appVersion: v0.4.4
     created: "2020-11-20T15:17:31.750428735Z"
     dependencies:
     - condition: redis.enabled
@@ -188,5 +208,21 @@ entries:
     - https://github.com/mvisonneau/helm-charts/tree/main/charts/gitlab-ci-pipelines-exporter
     urls:
     - https://github.com/mvisonneau/helm-charts/releases/download/gitlab-ci-pipelines-exporter-0.0.1/gitlab-ci-pipelines-exporter-0.0.1.tgz
+    version: 0.0.1
+  tailscale-relay:
+  - apiVersion: v1
+    appVersion: v1.2.8
+    created: "2020-11-23T22:31:45.864035818Z"
+    description: Deploy a tailscale relay on top of kubernetes
+    digest: edf27deab7e91dd1fbbc7d8fa23361c112f7d1184d755cf4bd6c0639307a05fd
+    home: https://github.com/mvisonneau/tailscale-relay-over-k8s
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: tailscale-relay
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/tailscale-relay-over-k8s
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/tailscale-relay-0.0.1/tailscale-relay-0.0.1.tgz
     version: 0.0.1
 generated: "2020-03-09T18:24:55.039559Z"
