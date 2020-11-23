@@ -1,8 +1,20 @@
 # tailscale-relay
 
-![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![AppVersion: v1.0.5](https://img.shields.io/badge/AppVersion-v1.0.5-informational?style=flat-square)
+![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![AppVersion: v1.2.8](https://img.shields.io/badge/AppVersion-v1.2.8-informational?style=flat-square)
 
 Deploy a tailscale relay on top of kubernetes
+
+**Homepage:** <https://github.com/mvisonneau/tailscale-relay-over-k8s>
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| mvisonneau | maxime.visonneau@gmail.com |  |
+
+## Source Code
+
+* <https://github.com/mvisonneau/helm-charts/tree/main/charts/tailscale-relay-over-k8s>
 
 ## Values
 
