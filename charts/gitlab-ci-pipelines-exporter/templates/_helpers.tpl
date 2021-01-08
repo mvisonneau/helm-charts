@@ -35,9 +35,16 @@ Create chart name and version as used by the chart label.
 Create the name of the service account
 */}}
 {{- define "exporter.serviceAccountName" -}}
+<<<<<<< HEAD
+{{- if .Values.rbac.enabled -}}
+    {{ default (include "app.fullname" .) .Values.rbac.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.rbac.serviceAccount.name }}
+=======
 {{- if .Values.serviceAccount.create -}}
     {{ default (include "app.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
+>>>>>>> 426d8ca44edbdd1aaa8182dca261096d07fd10ed
 {{- end -}}
 {{- end -}}

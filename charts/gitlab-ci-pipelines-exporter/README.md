@@ -1,6 +1,6 @@
 # gitlab-ci-pipelines-exporter
 
-![Version: 0.0.9](https://img.shields.io/badge/Version-0.0.9-informational?style=flat-square) ![AppVersion: v0.4.6](https://img.shields.io/badge/AppVersion-v0.4.6-informational?style=flat-square)
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![AppVersion: v0.4.6](https://img.shields.io/badge/AppVersion-v0.4.6-informational?style=flat-square)
 
 Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
@@ -34,7 +34,7 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"mvisonneau/gitlab-ci-pipelines-exporter"` | image pullPolicy |
 | ingress.annotations | string | `nil` | additional annotations for the ingress resource |
-| ingress.enabled | bool | `false` | deploy a ingress to access the exporter pod(s) /webhook endpoint |
+| ingress.enabled | bool | `true` | deploy a ingress to access the exporter pod(s) /webhook endpoint |
 | ingress.hosts | list | `["gcpe.example.com"]` | ingress hosts |
 | ingress.path | string | `"/webhook"` | path on the exporter to point the root of the ingress |
 | ingress.servicePort | string | `"http"` | service port for the ingress |
@@ -45,6 +45,7 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | nodeSelector | object | `{}` | node selector for pod assignment |
 | podAnnotations | object | `{}` | additional annotations for the pods |
 | podLabels | object | `{}` | additional labels for the pods |
+| rbac | object | `{"clusterRole":"","enabled":false,"serviceAccount":{"name":""}}` | If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation. |
 | readinessProbe.failureThreshold | int | `3` |  |
 | readinessProbe.httpGet.path | string | `"/health/ready"` |  |
 | readinessProbe.httpGet.port | int | `8080` |  |

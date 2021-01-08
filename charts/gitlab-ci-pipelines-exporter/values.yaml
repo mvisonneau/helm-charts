@@ -2,7 +2,11 @@
 # replicas -- amount of desired pod(s) replica(s)
 replicas: 1
 
+<<<<<<< HEAD
+# prefer using .Release.name to assign namespace!  
+=======
 namespace: default
+>>>>>>> 426d8ca44edbdd1aaa8182dca261096d07fd10ed
 
 image:
   # image.repository -- image repository
@@ -162,7 +166,7 @@ redis:
 ## Ingress configuration (useful when looking to expose /webhook endpoint externally)
 ingress:
   # ingress.enabled -- deploy a ingress to access the exporter pod(s) /webhook endpoint
-  enabled: false
+  enabled: true
 
   # ingress.annotations -- additional annotations for the ingress resource
   annotations:
@@ -184,6 +188,16 @@ ingress:
     - hosts:
         - gcpe.example.com
 
+<<<<<<< HEAD
+# rbac -- If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation.
+rbac:
+  enabled: false
+  clusterRole: ""
+  # serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
+  serviceAccount: 
+    name: ""
+=======
 rbac:
   enabled: false
   clusterRole: cluster-admin
+>>>>>>> 426d8ca44edbdd1aaa8182dca261096d07fd10ed
