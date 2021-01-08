@@ -2,11 +2,7 @@
 # replicas -- amount of desired pod(s) replica(s)
 replicas: 1
 
-<<<<<<< HEAD
 # prefer using .Release.name to assign namespace!  
-=======
-namespace: default
->>>>>>> 426d8ca44edbdd1aaa8182dca261096d07fd10ed
 
 image:
   # image.repository -- image repository
@@ -188,7 +184,7 @@ ingress:
     - hosts:
         - gcpe.example.com
 
-<<<<<<< HEAD
+
 # rbac -- If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation.
 rbac:
   enabled: false
@@ -196,8 +192,4 @@ rbac:
   # serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
   serviceAccount: 
     name: ""
-=======
-rbac:
-  enabled: false
-  clusterRole: cluster-admin
->>>>>>> 426d8ca44edbdd1aaa8182dca261096d07fd10ed
+
