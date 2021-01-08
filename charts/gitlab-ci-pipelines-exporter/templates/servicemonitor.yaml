@@ -3,7 +3,6 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ template "app.fullname" . }}
-  namespace: {{ .Values.namespace }}
   labels:
     app.kubernetes.io/name: {{ include "app.name" . }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}

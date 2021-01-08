@@ -162,7 +162,7 @@ redis:
 ## Ingress configuration (useful when looking to expose /webhook endpoint externally)
 ingress:
   # ingress.enabled -- deploy a ingress to access the exporter pod(s) /webhook endpoint
-  enabled: true
+  enabled: false
 
   # ingress.annotations -- additional annotations for the ingress resource
   annotations:
