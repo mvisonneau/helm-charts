@@ -184,10 +184,6 @@ ingress:
     - hosts:
         - gcpe.example.com
 
-<<<<<<< HEAD
-
-=======
->>>>>>> add-serviceaccount
 # rbac -- If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation.
 rbac:
   enabled: false
@@ -195,7 +191,3 @@ rbac:
   # serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
   serviceAccount: 
     name: ""
-<<<<<<< HEAD
-
-=======
->>>>>>> add-serviceaccount
