@@ -2,6 +2,8 @@
 # replicas -- amount of desired pod(s) replica(s)
 replicas: 1
 
+namespace: default
+
 image:
   # image.repository -- image repository
   repository: mvisonneau/gitlab-ci-pipelines-exporter
@@ -181,3 +183,7 @@ ingress:
   tls:
     - hosts:
         - gcpe.example.com
+
+rbac:
+  enabled: false
+  clusterRole: cluster-admin
