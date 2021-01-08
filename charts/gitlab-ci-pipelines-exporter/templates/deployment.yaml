@@ -38,8 +38,11 @@ spec:
     spec:
       {{- if .Values.rbac.create }}
       serviceAccountName: {{ template "exporter.serviceAccountName" . }}
+<<<<<<< HEAD
       {{- else }}
       serviceAccountName: default
+=======
+>>>>>>> 9444a2c4ecff755cb7441156cee9e0b6707b7dc1
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
