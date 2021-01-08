@@ -4,7 +4,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ include "app.fullname" . }}
-  namespace: {{ .Values.namespace }}
   labels:
     app.kubernetes.io/name: {{ include "app.name" . }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}

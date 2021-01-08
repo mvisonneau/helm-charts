@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "app.fullname" . }}
-  namespace: {{ .Values.namespace }}
   labels:
     app.kubernetes.io/name: {{ include "app.name" . }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
@@ -36,7 +35,7 @@ spec:
         checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
 {{ with .Values.podAnnotations }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
-      {{- if .Values.rbac.create }}
+      {{- if .Values.rbac.enabled }}
       serviceAccountName: {{ template "exporter.serviceAccountName" . }}
       {{- end }}
       containers:
