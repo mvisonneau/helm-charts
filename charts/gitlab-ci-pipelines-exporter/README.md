@@ -34,7 +34,7 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"mvisonneau/gitlab-ci-pipelines-exporter"` | image pullPolicy |
 | ingress.annotations | string | `nil` | additional annotations for the ingress resource |
-| ingress.enabled | bool | `false` | deploy a ingress to access the exporter pod(s) /webhook endpoint |
+| ingress.enabled | bool | `true` | deploy a ingress to access the exporter pod(s) /webhook endpoint |
 | ingress.hosts | list | `["gcpe.example.com"]` | ingress hosts |
 | ingress.path | string | `"/webhook"` | path on the exporter to point the root of the ingress |
 | ingress.servicePort | string | `"http"` | service port for the ingress |
@@ -42,12 +42,10 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | labels | object | `{}` | additional labels for the service |
 | livenessProbe.httpGet.path | string | `"/health/live"` |  |
 | livenessProbe.httpGet.port | int | `8080` |  |
-| namespace | string | `"default"` |  |
 | nodeSelector | object | `{}` | node selector for pod assignment |
 | podAnnotations | object | `{}` | additional annotations for the pods |
 | podLabels | object | `{}` | additional labels for the pods |
-| rbac.clusterRole | string | `""` |  |
-| rbac.enabled | bool | `false` |  |
+| rbac | object | `{"clusterRole":"","enabled":false,"serviceAccount":{"name":""}}` | If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation. |
 | readinessProbe.failureThreshold | int | `3` |  |
 | readinessProbe.httpGet.path | string | `"/health/ready"` |  |
 | readinessProbe.httpGet.port | int | `8080` |  |
