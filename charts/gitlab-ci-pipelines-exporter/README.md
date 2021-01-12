@@ -34,7 +34,7 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"mvisonneau/gitlab-ci-pipelines-exporter"` | image pullPolicy |
 | ingress.annotations | string | `nil` | additional annotations for the ingress resource |
-| ingress.enabled | bool | `true` | deploy a ingress to access the exporter pod(s) /webhook endpoint |
+| ingress.enabled | bool | `false` | deploy a ingress to access the exporter pod(s) /webhook endpoint |
 | ingress.hosts | list | `["gcpe.example.com"]` | ingress hosts |
 | ingress.path | string | `"/webhook"` | path on the exporter to point the root of the ingress |
 | ingress.servicePort | string | `"http"` | service port for the ingress |
