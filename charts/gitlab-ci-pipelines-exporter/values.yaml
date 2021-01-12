@@ -2,6 +2,8 @@
 # replicas -- amount of desired pod(s) replica(s)
 replicas: 1
 
+# prefer using .Release.name to assign namespace!  
+
 image:
   # image.repository -- image repository
   repository: mvisonneau/gitlab-ci-pipelines-exporter
@@ -181,3 +183,11 @@ ingress:
   tls:
     - hosts:
         - gcpe.example.com
+
+# rbac -- If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation.
+rbac:
+  enabled: false
+  clusterRole: ""
+  # serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
+  serviceAccount: 
+    name: ""

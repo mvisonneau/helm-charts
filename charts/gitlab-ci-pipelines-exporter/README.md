@@ -1,6 +1,6 @@
 # gitlab-ci-pipelines-exporter
 
-![Version: 0.0.9](https://img.shields.io/badge/Version-0.0.9-informational?style=flat-square) ![AppVersion: v0.4.6](https://img.shields.io/badge/AppVersion-v0.4.6-informational?style=flat-square)
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![AppVersion: v0.4.6](https://img.shields.io/badge/AppVersion-v0.4.6-informational?style=flat-square)
 
 Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
@@ -45,6 +45,7 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | nodeSelector | object | `{}` | node selector for pod assignment |
 | podAnnotations | object | `{}` | additional annotations for the pods |
 | podLabels | object | `{}` | additional labels for the pods |
+| rbac | object | `{"clusterRole":"","enabled":false,"serviceAccount":{"name":""}}` | If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation. |
 | readinessProbe.failureThreshold | int | `3` |  |
 | readinessProbe.httpGet.path | string | `"/health/ready"` |  |
 | readinessProbe.httpGet.port | int | `8080` |  |

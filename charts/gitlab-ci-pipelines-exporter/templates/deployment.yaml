@@ -35,6 +35,9 @@ spec:
         checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
 {{ with .Values.podAnnotations }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
+      {{- if .Values.rbac.enabled }}
+      serviceAccountName: {{ template "exporter.serviceAccountName" . }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: {{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}
