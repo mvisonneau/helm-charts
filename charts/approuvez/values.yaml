@@ -1,0 +1,139 @@
+---
+# replicas -- amount of desired pod(s) replica(s)
+replicas: 1
+
+# prefer using .Release.name to assign namespace!  
+
+image:
+  # image.repository -- image repository
+  repository: ghcr.io/mvisonneau/approuvez
+
+  # image.tag -- image tag
+  # tag: <default to chart version>
+
+  # image.repository -- image pullPolicy
+  pullPolicy: IfNotPresent
+
+# labels -- additional labels for the deployment resource
+labels: {}
+
+# annotations -- additional annotations for the deployment resource
+annotations: {}
+
+# podLabels -- additional labels for the pods
+podLabels: {}
+
+# podAnnotations -- additional annotations for the pods
+podAnnotations: {}
+
+service:
+  # type -- service type
+  type: ClusterIP
+
+  # port -- service port
+  port: 8443
+
+  # labels -- additional labels for the service
+  labels: {}
+
+  # annotations -- additional annotations for the service
+  annotations: {}
+
+# resources -- resources to allocate to the pods
+resources: {}
+#  limits:
+#    cpu: 50m
+#    memory: 64Mi
+#  requests:
+#    cpu: 50m
+#    memory: 64Mi
+
+strategy:
+  # strategy -- deployment strategy type
+  type: RollingUpdate
+
+## Liveness and Readiness probes
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+livenessProbe:
+  httpGet:
+    path: /health/live
+    port: 8443
+
+readinessProbe:
+  httpGet:
+    path: /health/ready
+    port: 8443
+  initialDelaySeconds: 5
+  timeoutSeconds: 5
+  failureThreshold: 3
+  periodSeconds: 30
+
+# nodeSelector -- node selector for pod assignment
+## ref: https://kubernetes.io/docs/user-guide/node-selection/
+nodeSelector: {}
+
+# tolerations -- tolerations for pod assignment
+## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+tolerations: []
+
+# affinity -- affinity for pod assignment
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+affinity: {}
+
+# securityContext -- security context to apply to the pods
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context
+securityContext:
+  # runAsUser: 65534  # run as nobody user
+
+# args -- arguments for the command
+args:
+  - --log-format
+  - json
+  - serve
+
+# envVariables -- environment variables for the container
+envVariables: []
+  # - name: APPROUVEZ_LOG_LEVEL
+  #   value: debug
+  # - name: APPROUVEZ_SLACK_TOKEN
+  #   value: "<your-slack-token>"
+
+## Ingress configuration (useful when looking to expose /webhook endpoint externally)
+ingress:
+  # ingress.enabled -- deploy a ingress to access the exporter pod(s) /webhook endpoint
+  enabled: false
+
+  # ingress.annotations -- additional annotations for the ingress resource
+  annotations:
+    # kubernetes.io/ingress.class: nginx
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+  # ingress.path -- path on the exporter to point the root of the ingress
+  path: /
+
+  # ingress.servicePort -- service port for the ingress
+  servicePort: grpc-web
+
+  # ingress.hosts -- ingress hosts
+  hosts:
+    - approuvez.example.com
+
+  # ingress.tls -- ingress tls hosts config
+  tls:
+    - hosts:
+        - approuvez.example.com
+
+# tls -- mTLS certificates
+tls:
+  enabled: false
+  ca: ~
+  cert: ~
+  key: ~
+
+# rbac -- If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation.
+rbac:
+  enabled: false
+  clusterRole: ""
+  # serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
+  serviceAccount: 
+    name: ""
