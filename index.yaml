@@ -1,21 +1,5 @@
 apiVersion: v1
 entries:
-  approuvez:
-  - apiVersion: v1
-    appVersion: v0.1.0
-    created: "2021-01-22T17:57:46.237222109Z"
-    description: CLI helper to obtain live confirmation from people over Slack
-    digest: 88743f694950669a62f6b513fb6b197fb3db1439e6d4c173c96b6fcb216a28a4
-    home: https://github.com/mvisonneau/approuvez
-    maintainers:
-    - email: maxime.visonneau@gmail.com
-      name: mvisonneau
-    name: approuvez
-    sources:
-    - https://github.com/mvisonneau/helm-charts/tree/main/charts/approuvez
-    urls:
-    - https://github.com/mvisonneau/helm-charts/releases/download/approuvez-0.0.1/approuvez-0.0.1.tgz
-    version: 0.0.1
   generic-app:
   - apiVersion: v1
     appVersion: 0.0.0
