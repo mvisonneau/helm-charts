@@ -2,7 +2,7 @@
 replicas: 1
 
 image:
-  repository: mvisonneau/tailscale
+  repository: docker.io/mvisonneau/tailscale
   pullPolicy: IfNotPresent
   # tag: <default to chart app version>
 

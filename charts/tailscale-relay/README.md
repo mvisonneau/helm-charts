@@ -1,6 +1,6 @@
 # tailscale-relay
 
-![Version: 0.0.2](https://img.shields.io/badge/Version-0.0.2-informational?style=flat-square) ![AppVersion: v1.2.8](https://img.shields.io/badge/AppVersion-v1.2.8-informational?style=flat-square)
+![Version: 0.0.3](https://img.shields.io/badge/Version-0.0.3-informational?style=flat-square) ![AppVersion: v1.2.10](https://img.shields.io/badge/AppVersion-v1.2.10-informational?style=flat-square)
 
 Deploy a tailscale relay on top of kubernetes
 
@@ -26,7 +26,7 @@ Deploy a tailscale relay on top of kubernetes
 | config.variables | object | `{}` |  |
 | hostNetwork | bool | `false` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"mvisonneau/tailscale"` |  |
+| image.repository | string | `"docker.io/mvisonneau/tailscale"` |  |
 | labels | object | `{}` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
