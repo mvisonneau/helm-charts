@@ -4,7 +4,7 @@
 
 set -euox pipefail
 
-HELM_DOCS_VERSION="1.3.0"
+HELM_DOCS_VERSION="1.5.0"
 OS=$(uname)
 
 # install helm-docs
