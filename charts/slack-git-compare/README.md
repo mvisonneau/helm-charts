@@ -23,6 +23,7 @@ Compare git references within Slack
 | affinity | object | `{}` | affinity for pod assignment |
 | annotations | object | `{}` | additional annotations for the service |
 | args | list | `[]` | arguments for the exporter binary |
+| config | object | `{"github":{"orgs":"","token":"","url":"https://api.github.com/"},"gitlab":{"groups":"","token":"","url":"https://gitlab.com"},"log":{"format":"json","level":"info"},"slack":{"signing-secret":"","token":""}}` | configuration variables of the app |
 | envVariables | list | `[]` | environment variables for the container |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"mvisonneau/slack-git-compare"` | image pullPolicy |
@@ -31,7 +32,7 @@ Compare git references within Slack
 | ingress.hosts | list | `["sgc.example.com"]` | ingress hosts |
 | ingress.path | string | `"/"` | path to point the root of the ingress |
 | ingress.pathType | string | `"Prefix"` | pathType of the ingress |
-| ingress.servicePort | string | `"http"` | service port for the ingress |
+| ingress.service.port.name | string | `"http"` | service port name for the ingress |
 | ingress.tls | list | `[{"hosts":["sgc.example.com"]}]` | ingress tls hosts config |
 | labels | object | `{}` | additional labels for the service |
 | livenessProbe.httpGet.path | string | `"/health/live"` |  |

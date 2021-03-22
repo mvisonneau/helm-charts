@@ -50,6 +50,9 @@ spec:
 {{- with .Values.envVariables }}
           env: {{ toYaml . | nindent 16 }}
 {{- end }}
+          envFrom:
+            - secretRef:
+                name: {{ template "app.fullname" . }}-config
           ports:
             - name: http
               containerPort: 8080

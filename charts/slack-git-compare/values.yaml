@@ -123,8 +123,10 @@ ingress:
   # ingress.pathType -- pathType of the ingress
   pathType: Prefix
 
-  # ingress.servicePort -- service port for the ingress
-  servicePort: http
+  # ingress.service.port.name -- service port name for the ingress
+  service:
+    port:
+      name: http
 
   # ingress.hosts -- ingress hosts
   hosts:
@@ -142,3 +144,23 @@ rbac:
   # serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
   serviceAccount: 
     name: ""
+
+# config -- configuration variables of the app
+config:
+  github:
+    url: 'https://api.github.com/'
+    token: ''
+    orgs: ''
+
+  gitlab:
+    url: 'https://gitlab.com'
+    token: ''
+    groups: ''
+
+  slack:
+    token: ''
+    signing-secret: ''
+
+  log:
+    format: json
+    level: info
