@@ -335,6 +335,22 @@ entries:
     urls:
     - https://github.com/mvisonneau/helm-charts/releases/download/gitlab-ci-pipelines-exporter-0.0.1/gitlab-ci-pipelines-exporter-0.0.1.tgz
     version: 0.0.1
+  slack-git-compare:
+  - apiVersion: v2
+    appVersion: v0.0.1
+    created: "2021-03-22T16:53:19.75229182Z"
+    description: Compare git references within Slack
+    digest: 59cd11b5e848fc34026261660071dcd00ae22aa810b4b285b6a0d8434caa5f25
+    home: https://github.com/mvisonneau/slack-git-compare
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: slack-git-compare
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/slack-git-compare
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/slack-git-compare-0.0.1/slack-git-compare-0.0.1.tgz
+    version: 0.0.1
   tailscale-relay:
   - apiVersion: v1
     appVersion: v1.4.2
