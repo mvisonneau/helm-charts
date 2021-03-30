@@ -1,8 +1,8 @@
 ---
 apiVersion: v2
 name: slack-git-compare
-version: 0.0.2
-appVersion: v0.0.1
+version: 0.0.3
+appVersion: v0.1.0
 description: Compare git references within Slack
 home: https://github.com/mvisonneau/slack-git-compare
 sources:

@@ -32,7 +32,8 @@ spec:
         helm.sh/from: deploy.{{ include "app.fullname" . }}
 {{ with .Values.podLabels }}{{ toYaml . | indent 8 }}{{ end }}
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+        checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
 {{ with .Values.podAnnotations }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       {{- if .Values.rbac.enabled }}
@@ -53,6 +54,10 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ template "app.fullname" . }}-config
+          volumeMounts:
+            - name: config
+              mountPath: /etc/config.yml
+              subPath: config.yml
           ports:
             - name: http
               containerPort: 8080
@@ -78,3 +83,7 @@ spec:
 {{- with .Values.securityContext }}
       securityContext: {{ toYaml . | nindent 8 }}
 {{- end }}
+      volumes:
+        - name: config
+          configMap:
+            name: {{ template "app.fullname" . }}-config

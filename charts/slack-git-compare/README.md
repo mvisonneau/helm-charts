@@ -1,6 +1,6 @@
 # slack-git-compare
 
-![Version: 0.0.2](https://img.shields.io/badge/Version-0.0.2-informational?style=flat-square) ![AppVersion: v0.0.1](https://img.shields.io/badge/AppVersion-v0.0.1-informational?style=flat-square)
+![Version: 0.0.3](https://img.shields.io/badge/Version-0.0.3-informational?style=flat-square) ![AppVersion: v0.1.0](https://img.shields.io/badge/AppVersion-v0.1.0-informational?style=flat-square)
 
 Compare git references within Slack
 
@@ -23,8 +23,8 @@ Compare git references within Slack
 | affinity | object | `{}` | affinity for pod assignment |
 | annotations | object | `{}` | additional annotations for the service |
 | args | list | `[]` | arguments for the exporter binary |
-| config | object | `{"github":{"orgs":"","token":"","url":"https://api.github.com/"},"gitlab":{"groups":"","token":"","url":"https://gitlab.com"},"log":{"format":"json","level":"info"},"slack":{"signing-secret":"","token":""}}` | configuration variables of the app |
-| envVariables | list | `[]` | environment variables for the container |
+| config | object | `{"cache":{},"log":{"format":"json","level":"info"},"providers":[],"slack":{"signing-secret":"","token":""},"users":[]}` | configuration variables of the app |
+| envVariables | list | `[{"name":"SGC_CONFIG","value":"/etc/config.yml"}]` | environment variables for the container |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"mvisonneau/slack-git-compare"` | image pullPolicy |
 | ingress.annotations | string | `nil` | additional annotations for the ingress resource |

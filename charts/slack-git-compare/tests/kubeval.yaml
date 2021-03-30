@@ -1,3 +1,8 @@
 ---
 ingress:
   enabled: true
+
+config:
+  providers:
+    - type: gitlab
+      token: foo

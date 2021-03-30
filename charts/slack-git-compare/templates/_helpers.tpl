@@ -41,3 +41,24 @@ Create the name of the service account
     {{ default "default" .Values.rbac.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Create the name of the service account
+*/}}
+{{- define "sanitizedConfig" -}}
+{{- if eq (len .Values.config.providers) 0 -}}
+{{- fail "need at least 1 provider to be configured" -}}
+{{- end -}}
+providers:
+{{- range .Values.config.providers }}
+{{- if eq (len .owners) 0 -}}
+{{- fail "need at least 1 owner to be configured" -}}
+{{- end }}
+  - type: {{ required "provider type must be defined" .type }}
+    url: {{ .url | default "" }}
+    owners: {{ toYaml .owners | nindent 6 }}
+{{- end }}
+cache: {{ toYaml .Values.config.cache | nindent 2 }}
+log: {{ toYaml .Values.config.log | nindent 2 }}
+users: {{ toYaml .Values.config.users | nindent 2 }}
+{{- end -}}

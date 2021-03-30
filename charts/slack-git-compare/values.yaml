@@ -89,23 +89,9 @@ securityContext:
 args: []
 
 # envVariables -- environment variables for the container
-envVariables: []
-  # - name: SGC_LOG_FORMAT
-  #   value: json
-  # - name: SGC_LOG_LEVEL
-  #   value: debug
-  # - name: SGC_GITHUB_TOKEN
-  #   value: "<your-github-token>"
-  # - name: SGC_GITHUB_ORG
-  #   value: "<your-github-orgs (comma separated)>"
-  # - name: SGC_GITLAB_TOKEN
-  #   value: "<your-gitlab-token>"
-  # - name: SGC_GITLAB_GROUP
-  #   value: "<your-gitlab-groups (comma separated)>"
-  # - name: SGC_SLACK_TOKEN
-  #   value: "<your-slack-token>"
-  # - name: SGC_SLACK_SIGNING_SECRET
-  #   value: "<your-slack-signing_secret>"
+envVariables:
+  - name: SGC_CONFIG
+    value: /etc/config.yml
 
 ## Ingress configuration (useful when looking to expose /webhook endpoint externally)
 ingress:
@@ -147,15 +133,28 @@ rbac:
 
 # config -- configuration variables of the app
 config:
-  github:
-    url: 'https://api.github.com/'
-    token: ''
-    orgs: ''
+  cache: {}
+  # providers:
+  #   update_repositories:
+  #     every_seconds: 3600
+  #     on_start: true
+  #   update_repositories_refs:
+  #     every_seconds: 0
+  #     on_start: false
+  # slack:
+  #   update_users_emails:
+  #     every_seconds: 86400
+  #     on_start: true
 
-  gitlab:
-    url: 'https://gitlab.com'
-    token: ''
-    groups: ''
+  providers: []
+  # - type: github
+  #   url: 'https://api.github.com/'
+  #   token: ''
+  #   owners: [foo,bar]
+  # - type: gitlab
+  #   url: 'https://gitlab.com'
+  #   token: ''
+  #   owners: [foo,bar]
 
   slack:
     token: ''
@@ -164,3 +163,8 @@ config:
   log:
     format: json
     level: info
+  
+  users: []
+  # - email: foo@bar.baz
+  #   aliases:
+  #     - baz@bar.foo
