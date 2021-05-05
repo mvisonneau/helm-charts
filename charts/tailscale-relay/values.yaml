@@ -71,6 +71,14 @@ config:
   # Other variables to use during the tailscale up command
   variables: {}
     # eg:
-    # TAILSCALE_HOSTNAME: "hostname-override"
+    # TAILSCALE_ACCEPT_DNS: "true"
+    # TAILSCALE_ACCEPT_ROUTES: "false"
     # TAILSCALE_ADVERTISE_ROUTES: 10.0.0.0/8
     # TAILSCALE_ADVERTISE_TAGS: env:prod
+    # TAILSCALE_FORCE_REAUTH: "false"
+    # TAILSCALE_HOST_ROUTES: "true"
+    # TAILSCALE_HOSTNAME: hostname-override
+    # TAILSCALE_LOGIN_SERVER: https://login.tailscale.com
+    # TAILSCALE_NETFILTER_MODE: "on"
+    # TAILSCALE_SHIELDS_UP: "false"
+    # TAILSCALE_SNAT_SUBNET_ROUTES: "true"
