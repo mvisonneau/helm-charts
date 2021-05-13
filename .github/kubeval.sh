@@ -5,7 +5,7 @@
 set -euox pipefail
 
 CHART_DIRS="$(find charts/* -type d -maxdepth 0)"
-KUBEVAL_VERSION="0.15.0"
+KUBEVAL_VERSION="0.16.1"
 SCHEMA_LOCATION="https://kubernetesjsonschema.dev/"
 
 # install kubeval
