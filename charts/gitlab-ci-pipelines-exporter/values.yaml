@@ -184,8 +184,13 @@ ingress:
   # ingress.path -- path on the exporter to point the root of the ingress
   path: /webhook
 
-  # ingress.servicePort -- service port for the ingress
-  servicePort: http
+  # ingress.pathType -- pathType for the ingress
+  pathType: Prefix
+
+  service:
+    port:
+    # ingress.service.port.name -- service port for the ingress
+      name: http
 
   # ingress.hosts -- ingress hosts
   hosts:

@@ -1,6 +1,6 @@
 {{- if .Values.ingress.enabled -}}
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ include "app.fullname" . }}
@@ -32,8 +32,10 @@ spec:
       http:
         paths:
           - path: {{ $.Values.ingress.path }}
+            pathType: {{ $.Values.ingress.pathType }}
             backend:
-              serviceName: {{ include "app.fullname" $ }}
-              servicePort: {{ $.Values.ingress.servicePort }}
+              service:
+                name: {{ $.Values.ingress.service.name | default (include "app.fullname" $) }}
+                port: {{ toYaml $.Values.ingress.service.port | nindent 18 }}
     {{- end }}
 {{- end }}
