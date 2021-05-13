@@ -1,5 +1,7 @@
 .DEFAULT_GOAL := help
-KUBERNETES_VERSION := 1.18.1
+# https://github.com/instrumenta/kubernetes-json-schema
+KUBEVAL_SCHEMA_VERSION := 1.21.0
+KUBEVAL_SCHEMA_LOCATION := https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/
 CHARTS := $(shell find charts/* -type d -maxdepth 0)
 
 .PHONY: lint-charts
@@ -14,7 +16,11 @@ docs: ## Generate charts docs
 lint-kubeval: ## Lint the charts templated kubernetes values
 	@for chart in $(CHARTS); do \
 		helm dependency build $$chart; \
-		helm template --values $$chart/tests/kubeval.yaml $$chart | kubeval --strict --ignore-missing-schemas --kubernetes-version $(KUBERNETES_VERSION); \
+		helm template --values $$chart/tests/kubeval.yaml $$chart | \
+		kubeval \
+			--strict \
+			-v $(KUBEVAL_SCHEMA_VERSION) \
+			-s $(KUBEVAL_SCHEMA_LOCATION); \
 	done
 
 .PHONY: update-deps

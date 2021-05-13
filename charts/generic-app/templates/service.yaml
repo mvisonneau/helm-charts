@@ -1,14 +1,13 @@
 {{- if .Values.service.enabled -}}
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ template "app.fullname" . }}
-  labels:
-    app.kubernetes.io/name: {{ include "app.name" . }}
-    app.kubernetes.io/version: {{ .Chart.AppVersion }}
-    helm.sh/chart: {{ include "app.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  {{- include "generic.labels" . | nindent 2 }}
+{{- with .Values.service.annotations }}
+  annotations: {{ toYaml . | nindent 4 }}
+{{- end }}
 spec:
   ports: {{ toYaml .Values.service.ports | nindent 4 }}
   selector:

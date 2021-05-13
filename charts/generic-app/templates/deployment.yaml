@@ -3,13 +3,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "app.fullname" . }}
-  labels:
-    app.kubernetes.io/name: {{ include "app.name" . }}
-    app.kubernetes.io/version: {{ .Chart.AppVersion }}
-    helm.sh/chart: {{ include "app.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{ with .Values.pods.labels }}{{ toYaml . | indent 4 }}{{ end }}
+  {{- include "generic.labels" . | nindent 2 }}
+  {{- include "pods.labels" . | nindent 4 }}
   {{- with .Values.pods.annotations }}
   annotations: {{ toYaml . | nindent 4 }}
   {{- end }}
@@ -27,23 +22,21 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "app.name" . }}
-      helm.sh/from: deploy.{{ include "app.fullname" . }}
+      sphere.io/from: deploy.{{ include "app.fullname" . }}
   template:
     metadata:
-      labels:
-        app.kubernetes.io/name: {{ include "app.name" . }}
-        app.kubernetes.io/version: {{ .Chart.AppVersion }}
-        helm.sh/chart: {{ include "app.chart" . }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
-        app.kubernetes.io/managed-by: {{ .Release.Service }}
-        helm.sh/from: deploy.{{ include "app.fullname" . }}
-{{ with .Values.pods.podLabels }}{{ toYaml . | indent 8 }}{{ end }}
+      {{- include "generic.labels" . | nindent 6 }}
+        sphere.io/from: deploy.{{ include "app.fullname" . }}
+        {{- include "pods.podLabels" . | nindent 8 }}
       {{- with .Values.pods.podAnnotations }}
       annotations: {{ toYaml . | nindent 8 }}
       {{- end }}
     spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}
       dnsPolicy: {{ .Values.pods.dnsPolicy }}
+      {{- with .Values.pods.dnsConfig }}
+      dnsConfig: {{ toYaml . | nindent 8 }}
+      {{- end }}
       {{- if .Values.imagePullCredentials }}
       imagePullSecrets:
         - name: {{ template "app.fullname" . }}-image-pull
@@ -68,9 +61,7 @@ spec:
           {{- with .Values.pods.args }}
           args: {{ toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.pods.env }}
-          env: {{ toYaml . | nindent 12 }}
-          {{- end }}
+          env: {{ include "pods.env" . | nindent 12 }}
           {{- with .Values.pods.envFrom }}
           envFrom: {{ toYaml . | nindent 12 }}
           {{- end }}

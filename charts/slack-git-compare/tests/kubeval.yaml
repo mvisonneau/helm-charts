@@ -6,3 +6,9 @@ config:
   providers:
     - type: gitlab
       token: foo
+      owners: 
+        - bar
+  
+  slack:
+    token: 'foo'
+    signing-secret: 'bar'

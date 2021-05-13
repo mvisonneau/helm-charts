@@ -4,12 +4,7 @@ apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
   name: {{ template "app.fullname" . }}
-  labels:
-    app.kubernetes.io/name: {{ include "app.name" . }}
-    app.kubernetes.io/version: {{ .Chart.AppVersion }}
-    helm.sh/chart: {{ include "app.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  {{- include "generic.labels" . | nindent 2 }}
 spec:
   selector:
     matchLabels:

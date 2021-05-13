@@ -1,26 +1,39 @@
-# Default values
-
-# Application specific names
-# Please define at least the 'nameOverride' variable when using this chart
+# nameOverride -- name of the chart/release to override 'generic-app' with
 nameOverride:
-# fullNameOverride:
 
 ##
 # Pods configuration
 ##
 
 pods:
-  # Mechanism to use to schedule pods
+  # pods.controller -- controller used to schedule pods
   # Can either be 'deployment', 'statefulset' or 'daemonset'
   controller: deployment
 
   # Container image to use
   image:
+    # pods.image.name -- image repository/name
     name:
+
+    # pods.image.tag -- image tag
     tag:
+
+    # pods.image.pullPolicy -- image pullPolicy
     pullPolicy: IfNotPresent
 
-  # If you are not using HPAs you can also statically define the amount of replicas
+    # pods.image.pullSecrets -- Optional array of imagePullSecrets containing private registry credentials
+    # Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    pullSecrets: []
+    # - name: secretName
+
+    # pods.image.pullCredentials -- Automatically create a secret with the credentials and use it
+    # Cannot be used in conjunction of image.pullSecrets
+    pullCredentials: {}
+      # registry: quay.io
+      # username: someone
+      # password: sillyness
+
+  # pods.replicas -- amount of desired pod(s) replica(s)
   # Ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#replicas
   replicas:
 
@@ -84,11 +97,6 @@ pods:
 
   # DNS Policy
   dnsPolicy: ClusterFirst
-
-  ## Optional array of imagePullSecrets containing private registry credentials
-  ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-  imagePullSecrets: []
-  # - name: secretName
 
   # Affinity configuration
   affinity:
@@ -177,13 +185,19 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
   path: /
-  servicePort: http
-  hosts:
-    - example.com
-  tls:
-    - hosts:
-        - example.com
+  pathType: Prefix
+
+  service:
+    port:
+      name: http
+
+  hosts: []
+    # - example.com
+  tls: []
+    # - hosts:
+    #     - example.com
 
 ##
 # Pod Disruption Budget configuration
@@ -216,5 +230,57 @@ secrets: {}
 ##
 
 serviceAccount:
+  # serviceAccount.create -- create a service account and associate it with the pods
   create: false
+
+  # serviceAccount.name -- name of the service account to use (and potentially create)
   name: default
+
+##
+# Service monitor configuration
+##
+
+serviceMonitor:
+  enabled: false
+  interval: 30s
+  port: metrics
+  path: /metrics
+
+##
+# Datadog specific env variables and labels
+##
+
+datadog:
+  # global.datadog.enabled -- inject datadog related labels/env variables
+  enabled: false
+
+  # global.datadog.env -- current environment
+  # env: (default to unknown)
+
+  # global.datadog.service -- app/service name
+  # service: (default to release name)
+
+  # global.datadog.version -- app version
+  # version: (default to appVersion + release revision)
+  
+##
+# Global configuration (ideal when embedding this chart within another)
+##
+
+global:
+  ##
+  # Datadog specific env variables and labels
+  ##
+
+  datadog:
+    # global.datadog.enabled -- inject datadog related labels/env variables
+    enabled: false
+
+    # global.datadog.env -- current environment
+    # env: (default to unknown)
+
+    # global.datadog.service -- app/service name
+    # service: (default to release name)
+
+    # global.datadog.version -- app version
+    # version: (default to appVersion + release revision)

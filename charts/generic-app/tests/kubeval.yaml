@@ -1,0 +1,16 @@
+nameOverride: foo
+
+configMaps:
+  foo:
+    bar: baz
+
+pods:
+  image:
+    pullCredentials:
+      registry: quay.io
+      username: someone
+      password: sillyness
+
+ingress:
+  enabled: true
+
