@@ -11,8 +11,20 @@ image:
   # image.tag -- image tag
   # tag: <default to chart version>
 
-  # image.repository -- image pullPolicy
+  # image.pullPolicy -- image pullPolicy
   pullPolicy: IfNotPresent
+
+  # image.pullSecrets -- Optional array of imagePullSecrets containing private registry credentials
+  # Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+  pullSecrets: []
+  # - name: secretName
+
+  # image.pullCredentials -- Automatically create a secret with the credentials and use it
+  # Cannot be used in conjunction of image.pullSecrets
+  pullCredentials: {}
+    # registry: quay.io
+    # username: someone
+    # password: sillyness
 
 # labels -- additional labels for the deployment resource
 labels: {}
