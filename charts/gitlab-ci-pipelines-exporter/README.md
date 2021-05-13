@@ -1,6 +1,6 @@
 # gitlab-ci-pipelines-exporter
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![AppVersion: v0.4.8](https://img.shields.io/badge/AppVersion-v0.4.8-informational?style=flat-square)
+![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![AppVersion: v0.4.8](https://img.shields.io/badge/AppVersion-v0.4.8-informational?style=flat-square)
 
 Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
@@ -16,12 +16,6 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
 * <https://github.com/mvisonneau/helm-charts/tree/main/charts/gitlab-ci-pipelines-exporter>
 
-## Requirements
-
-| Repository | Name | Version |
-|------------|------|---------|
-| https://charts.bitnami.com/bitnami | redis | 12.7.0 |
-
 ## Values
 
 | Key | Type | Default | Description |
@@ -31,8 +25,10 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | args | list | `["--config","/etc/config.yml","--log-format","json"]` | arguments for the exporter binary |
 | config | object | `{}` | configuration of the exporter |
 | envVariables | list | `[]` | environment variables for the container |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"mvisonneau/gitlab-ci-pipelines-exporter"` | image pullPolicy |
+| image.pullCredentials | object | `{}` | Automatically create a secret with the credentials and use it Cannot be used in conjunction of image.pullSecrets |
+| image.pullPolicy | string | `"IfNotPresent"` | image pullPolicy |
+| image.pullSecrets | list | `[]` | Optional array of imagePullSecrets containing private registry credentials Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/ |
+| image.repository | string | `"mvisonneau/gitlab-ci-pipelines-exporter"` | image repository |
 | ingress.annotations | string | `nil` | additional annotations for the ingress resource |
 | ingress.enabled | bool | `false` | deploy a ingress to access the exporter pod(s) /webhook endpoint |
 | ingress.hosts | list | `["gcpe.example.com"]` | ingress hosts |
