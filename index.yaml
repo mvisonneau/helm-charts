@@ -378,6 +378,21 @@ entries:
   slack-git-compare:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2021-05-13T11:16:01.667655093Z"
+    description: Compare git references within Slack
+    digest: 98a28922dfdea30d39cbc64dbaf4bc6a15a370267d34ef55827b96d618cecb03
+    home: https://github.com/mvisonneau/slack-git-compare
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: slack-git-compare
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/slack-git-compare
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/slack-git-compare-0.0.4/slack-git-compare-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2021-03-30T11:35:47.45138579Z"
     description: Compare git references within Slack
     digest: 43f7a46b2b57830720dc296ed55d7d28151b85c9e487789d62db8c2ab3d4147a
