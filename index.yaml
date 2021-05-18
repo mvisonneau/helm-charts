@@ -34,6 +34,21 @@ entries:
   generic-app:
   - apiVersion: v2
     appVersion: 0.0.0
+    created: "2021-05-18T13:23:48.698441435Z"
+    description: Generic Application Chart
+    digest: 0ed2cff86fe37df448fab73276e04856372c0aa73926d694ce7ac0ca66fd77f7
+    home: https://github.com/mvisonneau/helm-charts
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: generic-app
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/generic-app
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/generic-app-0.0.11/generic-app-0.0.11.tgz
+    version: 0.0.11
+  - apiVersion: v2
+    appVersion: 0.0.0
     created: "2021-05-18T13:21:48.556088612Z"
     description: Generic Application Chart
     digest: f606db79634e39f25a485e8c803b7eb2c0db6bdf4e9c0cd7385cc55115f1c2e0
@@ -393,6 +408,21 @@ entries:
   slack-git-compare:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2021-05-18T13:23:48.873147502Z"
+    description: Compare git references within Slack
+    digest: 24f89abb06218717440428d8a10d174ea54cc4fbcaaea7ac88411c1ee413e22f
+    home: https://github.com/mvisonneau/slack-git-compare
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: slack-git-compare
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/slack-git-compare
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/slack-git-compare-0.0.6/slack-git-compare-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2021-05-18T13:21:48.741011186Z"
     description: Compare git references within Slack
     digest: c9ff61b443263e0659efa87b23a4ed6349f56c85333b49a332779162d7a08503
@@ -467,6 +497,21 @@ entries:
     - https://github.com/mvisonneau/helm-charts/releases/download/slack-git-compare-0.0.1/slack-git-compare-0.0.1.tgz
     version: 0.0.1
   tailscale-relay:
+  - apiVersion: v2
+    appVersion: v1.8.3
+    created: "2021-05-18T13:23:49.036609257Z"
+    description: Deploy a tailscale relay on top of kubernetes
+    digest: 728aa28f8eeae9ce7a6105e246dd7d944d0e1f7b26962d7a161d0ce838d6e5c1
+    home: https://github.com/mvisonneau/tailscale-relay-over-k8s
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: tailscale-relay
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/tailscale-relay-over-k8s
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/tailscale-relay-0.0.7/tailscale-relay-0.0.7.tgz
+    version: 0.0.7
   - apiVersion: v1
     appVersion: v1.6.0
     created: "2021-05-05T12:17:36.710307102Z"
