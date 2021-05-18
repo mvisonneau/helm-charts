@@ -73,8 +73,11 @@ config:
     # eg:
     # TAILSCALE_ACCEPT_DNS: "true"
     # TAILSCALE_ACCEPT_ROUTES: "false"
+    # TAILSCALE_ADVERTISE_EXIT_NODES: "false"
     # TAILSCALE_ADVERTISE_ROUTES: 10.0.0.0/8
     # TAILSCALE_ADVERTISE_TAGS: env:prod
+    # TAILSCALE_EXIT_NODE: "false"
+    # TAILSCALE_EXIT_NODE_ALLOW_LAN_ACCESS: "false"
     # TAILSCALE_FORCE_REAUTH: "false"
     # TAILSCALE_HOST_ROUTES: "true"
     # TAILSCALE_HOSTNAME: hostname-override
