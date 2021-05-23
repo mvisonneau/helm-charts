@@ -36,6 +36,9 @@ spec:
 {{ with .Values.podAnnotations }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       hostNetwork: {{ .Values.hostNetwork }}
+      {{- if .Values.rbac.enabled }}
+      serviceAccountName: {{ template "exporter.serviceAccountName" . }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: {{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}
