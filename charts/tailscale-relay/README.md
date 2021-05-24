@@ -31,6 +31,7 @@ Deploy a tailscale relay on top of kubernetes
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
+| rbac | object | `{"enabled":false,"serviceAccount":{"name":""}}` | If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation. |
 | replicas | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext.capabilities.add[0] | string | `"NET_ADMIN"` |  |

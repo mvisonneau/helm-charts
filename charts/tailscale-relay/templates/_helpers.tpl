@@ -30,3 +30,11 @@ Create chart name and version as used by the chart label.
 {{- define "app.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{- define "exporter.serviceAccountName" -}}
+{{- if .Values.rbac.enabled -}}
+    {{ default (include "app.fullname" .) .Values.rbac.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.rbac.serviceAccount.name }}
+{{- end -}}
+{{- end -}}

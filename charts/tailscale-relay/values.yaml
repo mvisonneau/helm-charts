@@ -85,3 +85,10 @@ config:
     # TAILSCALE_NETFILTER_MODE: "on"
     # TAILSCALE_SHIELDS_UP: "false"
     # TAILSCALE_SNAT_SUBNET_ROUTES: "true"
+
+# rbac -- If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation.
+rbac:
+  enabled: false
+  # serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
+  serviceAccount:
+    name: ""
