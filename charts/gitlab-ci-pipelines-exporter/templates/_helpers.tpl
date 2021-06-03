@@ -47,8 +47,12 @@ Sanitized version of the config
 */}}
 {{- define "sanitizedConfig" -}}
 log:
+  {{- if .Values.config.log }}
   level: {{ default "info" .Values.config.log.level }}
   format: {{ default "json" .Values.config.log.format }}
+  {{- else }}
+  format: json
+  {{- end }}
 
 {{- with .Values.config.server }}
 server:
@@ -69,7 +73,7 @@ server:
 {{- end }}
 {{- with .Values.config.gitlab }}
 gitlab:
-  url: {{ toYaml (default "none" .url) }}
+  url: {{ default "https://gitlab.com" .url }}
   {{- with .health_url }}
   health_url: {{ . }}
   {{- end }}

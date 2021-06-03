@@ -65,7 +65,7 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /etc/config.yml
-              subPath: config
+              subPath: config.yml
           ports:
             - name: exporter
               containerPort: 8080
@@ -93,5 +93,5 @@ spec:
 {{- end }}
       volumes:
         - name: config
-          secret:
-            secretName: {{ template "app.fullname" . }}-config
+          configMap:
+            name: {{ template "app.fullname" . }}-config
