@@ -1,6 +1,6 @@
 # gitlab-ci-pipelines-exporter
 
-![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![AppVersion: v0.4.9](https://img.shields.io/badge/AppVersion-v0.4.9-informational?style=flat-square)
+![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![AppVersion: v0.5.0](https://img.shields.io/badge/AppVersion-v0.5.0-informational?style=flat-square)
 
 Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
@@ -28,7 +28,7 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 |-----|------|---------|-------------|
 | affinity | object | `{}` | affinity for pod assignment |
 | annotations | object | `{}` | additional annotations for the service |
-| args | list | `["--config","/etc/config.yml","--log-format","json"]` | arguments for the exporter binary |
+| args | list | `["--config","/etc/config.yml"]` | arguments for the exporter binary |
 | config | object | `{}` | configuration of the exporter |
 | envVariables | list | `[]` | environment variables for the container |
 | image.pullCredentials | object | `{}` | Automatically create a secret with the credentials and use it Cannot be used in conjunction of image.pullSecrets |

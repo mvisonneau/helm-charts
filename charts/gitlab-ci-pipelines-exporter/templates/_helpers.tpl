@@ -41,3 +41,67 @@ Create the name of the service account
     {{ default "default" .Values.rbac.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Sanitized version of the config
+*/}}
+{{- define "sanitizedConfig" -}}
+log:
+  level: {{ default "info" .Values.config.log.level }}
+  format: {{ default "json" .Values.config.log.format }}
+
+{{- with .Values.config.server }}
+server:
+  {{- with .listen_address }}
+  listen_address: {{ . }}
+  {{- end }}
+  {{- with .enable_pprof }}
+  enable_pprof: {{ . }}
+  {{- end }}
+  {{- with .metrics }}
+  metrics: {{ toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .webhook.enabled }}
+  webhook:
+    enabled: true
+  {{- end }}
+
+{{- end }}
+{{- with .Values.config.gitlab }}
+gitlab:
+  url: {{ toYaml (default "none" .url) }}
+  {{- with .health_url }}
+  health_url: {{ . }}
+  {{- end }}
+  {{- with .enable_health_check }}
+  enable_health_check: {{ . }}
+  {{- end }}
+  {{- with .enable_tls_verify }}
+  enable_tls_verify: {{ . }}
+  {{- end }}
+  {{- with .maximum_requests_per_second }}
+  maximum_requests_per_second: {{ . }}
+  {{- end }}
+
+{{- end }}
+{{- with .Values.config.pull }}
+pull: {{ toYaml . | nindent 2 }}
+
+{{- end }}
+{{- with .Values.config.garbage_collect }}
+garbage_collect: {{ toYaml . | nindent 2 }}
+
+{{- end }}
+{{- with .Values.config.project_defaults }}
+project_defaults: {{ toYaml . | nindent 2 }}
+
+{{- end }}
+{{- with .Values.config.projects }}
+projects: {{ toYaml . | nindent 2 }}
+
+{{- end }}
+{{- with .Values.config.wildcards }}
+wildcards: {{ toYaml . | nindent 2 }}
+
+{{- end }}
+{{- end -}}
