@@ -141,8 +141,12 @@ redis:
   # redis.enabled -- deploy a redis statefulset
   enabled: true
 
-  # redis.usePassword -- use a password to connect to a redis
-  usePassword: false
+  # redis.architecture -- run in standalone or clustermode
+  architecture: standalone
+
+  auth:
+    # redis.auth.enabled -- enable authentication
+    enabled: false
 
   metrics:
     # redis.metrics.enabled -- enable /metrics endpoint of the redis pods
@@ -151,10 +155,6 @@ redis:
     serviceMonitor:
       # redis.metrics.serviceMonitor.enabled -- deploy a serviceMonitor resource for the redis pods
       enabled: false
-
-  cluster:
-    # redis.cluster.enabled -- deploy a redis in cluster mode
-    enabled: false
 
   master:
     persistence:

@@ -1,6 +1,6 @@
 # gitlab-ci-pipelines-exporter
 
-![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![AppVersion: v0.5.0](https://img.shields.io/badge/AppVersion-v0.5.0-informational?style=flat-square)
+![Version: 0.2.3](https://img.shields.io/badge/Version-0.2.3-informational?style=flat-square) ![AppVersion: v0.5.0](https://img.shields.io/badge/AppVersion-v0.5.0-informational?style=flat-square)
 
 Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
@@ -55,12 +55,12 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | readinessProbe.initialDelaySeconds | int | `5` |  |
 | readinessProbe.periodSeconds | int | `30` |  |
 | readinessProbe.timeoutSeconds | int | `5` |  |
-| redis.cluster.enabled | bool | `false` | deploy a redis in cluster mode |
+| redis.architecture | string | `"standalone"` | run in standalone or clustermode |
+| redis.auth.enabled | bool | `false` | enable authentication |
 | redis.enabled | bool | `true` | deploy a redis statefulset |
 | redis.master.persistence.enabled | bool | `false` | persist data |
 | redis.metrics.enabled | bool | `false` | enable /metrics endpoint of the redis pods |
 | redis.metrics.serviceMonitor.enabled | bool | `false` | deploy a serviceMonitor resource for the redis pods |
-| redis.usePassword | bool | `false` | use a password to connect to a redis |
 | replicas | int | `1` | amount of desired pod(s) replica(s) |
 | resources | object | `{}` | resources to allocate to the pods |
 | securityContext | string | `nil` | security context to apply to the pods |
