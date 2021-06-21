@@ -167,6 +167,26 @@ entries:
   gitlab-ci-pipelines-exporter:
   - apiVersion: v2
     appVersion: v0.5.0
+    created: "2021-06-21T13:10:08.23419162Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.6.1
+    description: Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
+    digest: 29fbcdabe875e49e97b6020c0fe1a8c080dce87993f2c02d0b932d40b94904de
+    home: https://github.com/mvisonneau/gitlab-ci-pipelines-exporter
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: gitlab-ci-pipelines-exporter
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/gitlab-ci-pipelines-exporter
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/gitlab-ci-pipelines-exporter-0.2.1/gitlab-ci-pipelines-exporter-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: v0.5.0
     created: "2021-06-03T22:18:00.546081035Z"
     dependencies:
     - condition: redis.enabled
@@ -537,6 +557,21 @@ entries:
     - https://github.com/mvisonneau/helm-charts/releases/download/slack-git-compare-0.0.1/slack-git-compare-0.0.1.tgz
     version: 0.0.1
   tailscale-relay:
+  - apiVersion: v2
+    appVersion: v1.8.5
+    created: "2021-06-21T13:10:08.341708483Z"
+    description: Deploy a tailscale relay on top of kubernetes
+    digest: 3e91d7b3b890cd530d6e29c2deffa7ee8d740d7b9619303f651597117d4e9072
+    home: https://github.com/mvisonneau/tailscale-relay-over-k8s
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: tailscale-relay
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/tailscale-relay-over-k8s
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/tailscale-relay-0.0.10/tailscale-relay-0.0.10.tgz
+    version: 0.0.10
   - apiVersion: v2
     appVersion: v1.8.5
     created: "2021-05-24T18:34:34.147973044Z"
