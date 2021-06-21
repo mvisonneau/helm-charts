@@ -167,6 +167,26 @@ entries:
   gitlab-ci-pipelines-exporter:
   - apiVersion: v2
     appVersion: v0.5.0
+    created: "2021-06-21T14:14:10.236047341Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.6.1
+    description: Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
+    digest: ec7d589f9d8da7ca15968e5d5f49d5e67e26bd7020e6f42afde305689c5f638a
+    home: https://github.com/mvisonneau/gitlab-ci-pipelines-exporter
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: gitlab-ci-pipelines-exporter
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/gitlab-ci-pipelines-exporter
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/gitlab-ci-pipelines-exporter-0.2.3/gitlab-ci-pipelines-exporter-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
+    appVersion: v0.5.0
     created: "2021-06-21T13:55:38.07720494Z"
     dependencies:
     - condition: redis.enabled
