@@ -77,12 +77,8 @@ gitlab:
   {{- with .health_url }}
   health_url: {{ . }}
   {{- end }}
-  {{- with .enable_health_check }}
-  enable_health_check: {{ . }}
-  {{- end }}
-  {{- with .enable_tls_verify }}
-  enable_tls_verify: {{ . }}
-  {{- end }}
+  enable_health_check: {{ .enable_health_check | default true }}
+  enable_tls_verify: {{ .enable_tls_verify | default true }}
   {{- with .maximum_requests_per_second }}
   maximum_requests_per_second: {{ . }}
   {{- end }}
