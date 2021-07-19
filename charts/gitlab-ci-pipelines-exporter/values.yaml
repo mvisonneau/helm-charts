@@ -110,7 +110,7 @@ args:
 # envVariables -- environment variables for the container
 envVariables:
   - name: GCPE_INTERNAL_MONITORING_LISTENER_ADDRESS
-    value: unix://.gcpe-monitor.sock
+    value: tcp://127.0.0.1:8082
 
 # config -- configuration of the exporter
 config: {}
