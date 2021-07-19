@@ -1,6 +1,6 @@
 # gitlab-ci-pipelines-exporter
 
-![Version: 0.2.4](https://img.shields.io/badge/Version-0.2.4-informational?style=flat-square) ![AppVersion: v0.5.0](https://img.shields.io/badge/AppVersion-v0.5.0-informational?style=flat-square)
+![Version: 0.2.5](https://img.shields.io/badge/Version-0.2.5-informational?style=flat-square) ![AppVersion: v0.5.1](https://img.shields.io/badge/AppVersion-v0.5.1-informational?style=flat-square)
 
 Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
@@ -29,8 +29,9 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | affinity | object | `{}` | affinity for pod assignment |
 | annotations | object | `{}` | additional annotations for the service |
 | args | list | `["--config","/etc/config.yml"]` | arguments for the exporter binary |
+| command | list | `["gitlab-ci-pipelines-exporter","run"]` | command for the exporter binary |
 | config | object | `{}` | configuration of the exporter |
-| envVariables | list | `[]` | environment variables for the container |
+| envVariables | list | `[{"name":"GCPE_INTERNAL_MONITORING_LISTENER_ADDRESS","value":"unix://.gcpe-monitor.sock"}]` | environment variables for the container |
 | image.pullCredentials | object | `{}` | Automatically create a secret with the credentials and use it Cannot be used in conjunction of image.pullSecrets |
 | image.pullPolicy | string | `"IfNotPresent"` | image pullPolicy |
 | image.pullSecrets | list | `[]` | Optional array of imagePullSecrets containing private registry credentials Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/ |

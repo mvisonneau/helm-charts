@@ -97,10 +97,20 @@ affinity: {}
 securityContext:
   # runAsUser: 65534  # run as nobody user
 
+# command -- command for the exporter binary
+command:
+  - gitlab-ci-pipelines-exporter
+  - run
+
 # args -- arguments for the exporter binary
 args:
   - --config
   - /etc/config.yml
+
+# envVariables -- environment variables for the container
+envVariables:
+  - name: GCPE_INTERNAL_MONITORING_LISTENER_ADDRESS
+    value: unix://.gcpe-monitor.sock
 
 # config -- configuration of the exporter
 config: {}
@@ -117,8 +127,7 @@ config: {}
   #       name: foo
   #       kind: group
 
-# envVariables -- environment variables for the container
-envVariables: []
+
 
 ## Manage a ServiceMonitor resource to automatically configure the endpoint
 ## through the Prometheus operator: https://github.com/coreos/prometheus-operator
