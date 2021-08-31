@@ -9,17 +9,19 @@ image:
 # Use hostNetwork for the pod
 hostNetwork: false
 
-## Additional labels to add to all resources
-additionalLabels: {}
-  # monitoring: prometheus-adapter
-
-## Additional labels and annotations for the statefulset
-##
+# -- Additional labels to add to all resources
+#
 labels: {}
-annotations: {}
+  # monitoring: k8s
 
-## Additional labels and annotations for the pods
+# -- Additional annotations to add to all resources
+#
+annotations: {}
+  # role: vpn
+
+# -- Additional labels for the pods
 podLabels: {}
+# -- Additional annotations for the pods
 podAnnotations: {}
 
 ## Resources to allocate to the pods

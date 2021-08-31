@@ -49,8 +49,8 @@ app.kubernetes.io/part-of: {{ .Chart.Name }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/version: {{ .Chart.AppVersion }}
-{{- if .Values.additionalLabels }}
-{{ toYaml .Values.additionalLabels }}
+{{- if .Values.labels }}
+{{ toYaml .Values.labels }}
 {{- end }}
 {{- end }}
 
@@ -60,6 +60,15 @@ Selector labels
 {{- define "tailscale-relay.selectorLabels" }}
 app.kubernetes.io/name: {{ include "app.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+{{/*
+Generate basic annotations
+*/}}
+{{- define "tailscale-relay.annotations" }}
+{{- if .Values.annotations }}
+{{ toYaml .Values.annotations }}
+{{- end }}
 {{- end }}
 
 {{- define "exporter.serviceAccountName" -}}

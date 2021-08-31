@@ -1,6 +1,6 @@
 # tailscale-relay
 
-![Version: 0.0.11](https://img.shields.io/badge/Version-0.0.11-informational?style=flat-square) ![AppVersion: v1.12.3](https://img.shields.io/badge/AppVersion-v1.12.3-informational?style=flat-square)
+![Version: 0.0.12](https://img.shields.io/badge/Version-0.0.12-informational?style=flat-square) ![AppVersion: v1.12.3](https://img.shields.io/badge/AppVersion-v1.12.3-informational?style=flat-square)
 
 Deploy a tailscale relay on top of kubernetes
 
@@ -21,16 +21,16 @@ Deploy a tailscale relay on top of kubernetes
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| annotations | object | `{}` |  |
+| annotations | object | `{}` | Additional annotations to add to all resources |
 | config.authKey | string | `"foo"` |  |
 | config.variables | object | `{}` |  |
 | hostNetwork | bool | `false` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"docker.io/mvisonneau/tailscale"` |  |
-| labels | object | `{}` |  |
+| labels | object | `{}` | Additional labels to add to all resources |
 | nodeSelector | object | `{}` |  |
-| podAnnotations | object | `{}` |  |
-| podLabels | object | `{}` |  |
+| podAnnotations | object | `{}` | Additional annotations for the pods |
+| podLabels | object | `{}` | Additional labels for the pods |
 | rbac | object | `{"enabled":false,"serviceAccount":{"name":""}}` | If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation. |
 | replicas | int | `1` |  |
 | resources | object | `{}` |  |

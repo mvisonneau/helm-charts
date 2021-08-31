@@ -5,10 +5,8 @@ metadata:
   name: {{ template "app.fullname" . }}
   labels:
     {{- include "tailscale-relay.labels" . | indent 4 }}
-{{ with .Values.labels }}{{ toYaml . | indent 4 }}{{ end }}
-  {{- with .Values.annotations }}
-  annotations: {{ toYaml . | nindent 4 }}
-  {{- end }}
+  annotations:
+    {{- include "tailscale-relay.annotations" . | indent 4 }}
 spec:
   replicas: {{ .Values.replicas }}
   selector:
@@ -23,6 +21,7 @@ spec:
       annotations:
         checksum/configMap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+        {{- include "tailscale-relay.annotations" . | indent 8 }}
 {{ with .Values.podAnnotations }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       hostNetwork: {{ .Values.hostNetwork }}
