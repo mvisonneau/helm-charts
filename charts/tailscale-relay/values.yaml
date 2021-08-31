@@ -9,6 +9,10 @@ image:
 # Use hostNetwork for the pod
 hostNetwork: false
 
+## Additional labels to add to all resources
+additionalLabels: {}
+  # monitoring: prometheus-adapter
+
 ## Additional labels and annotations for the statefulset
 ##
 labels: {}
