@@ -127,7 +127,10 @@ config: {}
   #       name: foo
   #       kind: group
 
-
+hostAliases: []
+  # - ip: 192.168.0.1
+  #   hostnames:
+  #     - gitlab.server.com
 
 ## Manage a ServiceMonitor resource to automatically configure the endpoint
 ## through the Prometheus operator: https://github.com/coreos/prometheus-operator
