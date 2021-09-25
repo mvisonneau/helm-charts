@@ -127,6 +127,9 @@ config: {}
   #       name: foo
   #       kind: group
 
+# -- name of a `Secret` containing the GitLab token in the `gitlabToken` field (required unless `config.gitlab.token` is specified)
+gitlabSecret: ""
+
 hostAliases: []
   # - ip: 192.168.0.1
   #   hostnames:

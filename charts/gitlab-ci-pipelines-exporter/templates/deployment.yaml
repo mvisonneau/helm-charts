@@ -57,8 +57,16 @@ spec:
 {{- with .Values.args }}
           args: {{ toYaml . | nindent 16 }}
 {{- end }}
+          env:
 {{- with .Values.envVariables }}
-          env: {{ toYaml . | nindent 16 }}
+          {{ toYaml . | nindent 10 }}
+{{- end }}
+{{- with .Values.gitlabSecret }}
+          - name: GCPE_GITLAB_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: {{ . }}
+                key: gitlabToken
 {{- end }}
           envFrom:
             - secretRef:
