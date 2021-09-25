@@ -16,11 +16,14 @@ docs: ## Generate charts docs
 lint-kubeval: ## Lint the charts templated kubernetes values
 	@for chart in $(CHARTS); do \
 		helm dependency build $$chart; \
-		helm template --values $$chart/tests/kubeval.yaml $$chart | \
-		kubeval \
-			--strict \
-			-v $(KUBEVAL_SCHEMA_VERSION) \
-			-s $(KUBEVAL_SCHEMA_LOCATION); \
+		for values in $$chart/tests/*.yaml; do \
+			echo "\nTesting $$values..."; \
+			helm template --values $$values $$chart | \
+			kubeval \
+				--strict \
+				-v $(KUBEVAL_SCHEMA_VERSION) \
+				-s $(KUBEVAL_SCHEMA_LOCATION); \
+		done; \
 	done
 
 .PHONY: update-deps
