@@ -76,6 +76,9 @@ spec:
         name: var-lib-tailscale
       spec:
         accessModes: [ "ReadWriteOnce" ]
+        {{- with .Values.storageClassName }}
+        storageClassName: {{ . | quote }}
+        {{- end }}
         resources:
           requests:
             storage: 1Gi

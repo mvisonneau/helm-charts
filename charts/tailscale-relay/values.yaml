@@ -98,3 +98,6 @@ rbac:
   # serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
   serviceAccount:
     name: ""
+
+# storageClassName -- If provided, use this storage class instead of the default
+storageClassName:

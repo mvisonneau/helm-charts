@@ -35,6 +35,7 @@ Deploy a tailscale relay on top of kubernetes
 | replicas | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext.capabilities.add[0] | string | `"NET_ADMIN"` |  |
+| storageClassName | string | `nil` | If provided, use this storage class instead of the default |
 | tolerations | list | `[]` |  |
 
 ----------------------------------------------
