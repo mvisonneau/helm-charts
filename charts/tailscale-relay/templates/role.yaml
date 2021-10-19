@@ -1,0 +1,18 @@
+{{- if .Values.rbac.create }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ template "app.fullname" . }}
+  annotations:
+    {{- include "app.annotations" . | indent 4 }}
+  labels:
+    {{- include "app.labels" . | indent 4 }}
+rules:
+  - apiGroups: [""]
+    # TODO: Troubleshoot as for some obscure reason it doesn't seem to work
+    # when being scoped down to a single resource
+    # resourceNames: [ {{ .Values.rbac.stateSecretName }} ]
+    resources: ["secrets"]
+    verbs: ["create", "get", "update"]
+{{- end }}

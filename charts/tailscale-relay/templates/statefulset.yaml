@@ -4,30 +4,28 @@ kind: StatefulSet
 metadata:
   name: {{ template "app.fullname" . }}
   labels:
-    {{- include "tailscale-relay.labels" . | indent 4 }}
+    {{- include "app.labels" . | indent 4 }}
   annotations:
-    {{- include "tailscale-relay.annotations" . | indent 4 }}
+    {{- include "app.annotations" . | indent 4 }}
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      {{- include "tailscale-relay.selectorLabels" . | indent 6 }}
+      {{- include "app.selectorLabels" . | indent 6 }}
   serviceName: {{ include "app.name" . }}
   template:
     metadata:
       labels:
-        {{- include "tailscale-relay.labels" . | indent 8 }}
+        {{- include "app.labels" . | indent 8 }}
 {{ with .Values.podLabels }}{{ toYaml . | indent 8 }}{{ end }}
       annotations:
         checksum/configMap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
-        {{- include "tailscale-relay.annotations" . | indent 8 }}
+        {{- include "app.annotations" . | indent 8 }}
 {{ with .Values.podAnnotations }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       hostNetwork: {{ .Values.hostNetwork }}
-      {{- if .Values.rbac.enabled }}
-      serviceAccountName: {{ template "exporter.serviceAccountName" . }}
-      {{- end }}
+      serviceAccountName: {{ template "app.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
           image: {{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}
@@ -38,6 +36,9 @@ spec:
           {{- with .Values.args }}
           args: {{ toYaml . | nindent 16 }}
           {{- end }}
+          env:
+            - name: TAILSCALED_STATE
+              value: kube:{{ .Values.rbac.stateSecretName }}
           envFrom:
             - configMapRef:
                 name: {{ template "app.fullname" . }}-config
@@ -56,12 +57,12 @@ spec:
           {{- with .Values.resources }}
           resources: {{ toYaml . | nindent 16 }}
           {{- end }}
-          volumeMounts:
-            - name: var-lib-tailscale
-              mountPath: /var/lib/tailscale
           {{- with .Values.securityContext }}
           securityContext: {{ toYaml . | nindent 16 }}
           {{- end }}
+      {{- with .Values.hostAliases }}
+      hostAliases: {{ toYaml . | nindent 8 }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector: {{ toYaml . | nindent 8 }}
       {{- end }}
@@ -71,11 +72,3 @@ spec:
       {{- with .Values.tolerations }}
       tolerations: {{ toYaml . | nindent 8 }}
       {{- end }}
-  volumeClaimTemplates:
-    - metadata:
-        name: var-lib-tailscale
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        resources:
-          requests:
-            storage: 1Gi

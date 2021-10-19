@@ -9,6 +9,14 @@ image:
 # Use hostNetwork for the pod
 hostNetwork: false
 
+# hostAliases -- allows you to configure custom host aliases
+hostAliases: {}
+  # eg:
+  # hostAliases:
+    # - ip: "172.20.0.1"
+      # hostnames:
+        # - "kubernetes.default.svc"
+
 # -- Additional labels to add to all resources
 #
 labels: {}
@@ -94,7 +102,12 @@ config:
 
 # rbac -- If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation.
 rbac:
-  enabled: false
-  # serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
+  # rbac.serviceAccount -- whether to create serviceAccount and role/bindings or not
+  create: true
+
+  # rbac.serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
   serviceAccount:
-    name: ""
+    name: tailscale-relay
+
+  # rbac.stateSecretName -- name of the secret in which tailscaled will store its state
+  stateSecretName: tailscale-relay-state

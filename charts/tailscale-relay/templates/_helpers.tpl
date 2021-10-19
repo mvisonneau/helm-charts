@@ -32,17 +32,10 @@ Create chart name and version as used by the chart label.
 {{- end -}}
 
 {{/*
-Create chart name and version as used by the chart label.
-*/}}
-{{- define "tailscale-relay.chart" -}}
-{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-
-{{/*
 Generate basic labels
 */}}
-{{- define "tailscale-relay.labels" }}
-helm.sh/chart: {{ include "tailscale-relay.chart" . }}
+{{- define "app.labels" }}
+helm.sh/chart: {{ include "app.chart" . }}
 app.kubernetes.io/name: {{ include "app.chart" . }}
 app.kubernetes.io/component: tailscale
 app.kubernetes.io/part-of: {{ .Chart.Name }}
@@ -57,7 +50,7 @@ app.kubernetes.io/version: {{ .Chart.AppVersion }}
 {{/*
 Selector labels
 */}}
-{{- define "tailscale-relay.selectorLabels" }}
+{{- define "app.selectorLabels" }}
 app.kubernetes.io/name: {{ include "app.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
@@ -65,13 +58,13 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{/*
 Generate basic annotations
 */}}
-{{- define "tailscale-relay.annotations" }}
+{{- define "app.annotations" }}
 {{- if .Values.annotations }}
 {{ toYaml .Values.annotations }}
 {{- end }}
 {{- end }}
 
-{{- define "exporter.serviceAccountName" -}}
+{{- define "app.serviceAccountName" -}}
 {{- if .Values.rbac.enabled -}}
     {{ default (include "app.fullname" .) .Values.rbac.serviceAccount.name }}
 {{- else -}}
