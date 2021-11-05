@@ -26,6 +26,10 @@ image:
     # username: someone
     # password: sillyness
 
+# -- Custom labels to add into metadata
+customLabels: {}
+  # app: gitlab-ci-pipelines-exporter
+
 # labels -- additional labels for the deployment resource
 labels: {}
 
