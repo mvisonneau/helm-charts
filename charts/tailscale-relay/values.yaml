@@ -84,7 +84,9 @@ config:
   # # Authorization key to connect onto tailscale (required)
   # authKey: foo
   
-  # Externally defined secret name
+  # # Externally defined secret name; 
+  # # If not defined, chart will attempt to use the *-config standard name
+  # # Exampe can be seen in *-config--example secret
   # existingSecretAuthKey: 
 
   # Other variables to use during the tailscale up command
