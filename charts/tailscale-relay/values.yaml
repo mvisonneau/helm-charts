@@ -79,8 +79,13 @@ securityContext:
 
 ## Config
 config:
-  # Authorization key to connect onto tailscale (required)
-  authKey: foo
+  # # 211130: JC: removing explicit authKey from values file, 
+  # #             as it is not a good security practice when used in gitflow environment
+  # # Authorization key to connect onto tailscale (required)
+  # authKey: foo
+  
+  # Externally defined secret name
+  # existingSecretAuthKey: 
 
   # Other variables to use during the tailscale up command
   variables: {}
