@@ -43,7 +43,11 @@ spec:
             - configMapRef:
                 name: {{ template "app.fullname" . }}-config
             - secretRef:
+                {{- if .Values.existingSecretAuthKey }}
+                name: {{ .Values.existingSecretAuthKey }}
+                {{- else }}
                 name: {{ template "app.fullname" . }}-config
+                {{- end}}
           ports:
             - name: exporter
               containerPort: 8080
