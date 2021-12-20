@@ -33,4 +33,7 @@ spec:
                 name: {{ $.Values.ingress.service.name | default (include "app.fullname" $) }}
                 port: {{ toYaml $.Values.ingress.service.port | nindent 18 }}
     {{- end }}
+  {{- if .Values.ingress.ingressClassName }}
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
+  {{- end }}
 {{- end }}
