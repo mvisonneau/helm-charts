@@ -131,6 +131,12 @@ config: {}
   #       name: foo
   #       kind: group
 
+# -- name of a `Secret` containing the GitLab token in the `gitlabToken` field (required unless `config.gitlab.token` is specified)
+gitlabSecret: ""
+
+# -- name of a `Secret` containing the webhook token in the `webhookToken` field (required unless `config.server.webhook.secret_token` is specified)
+webhookSecret: ""
+
 hostAliases: []
   # - ip: 192.168.0.1
   #   hostnames:
