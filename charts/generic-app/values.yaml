@@ -189,6 +189,8 @@ ingress:
   path: /
   pathType: Prefix
 
+  ingressClassName: ""
+
   service:
     port:
       name: http
