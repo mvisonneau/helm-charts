@@ -4,11 +4,7 @@ kind: ConfigMap
 metadata:
   name: {{ template "app.fullname" . }}-config
   labels:
-    app.kubernetes.io/name: {{ include "app.name" . }}
-    app.kubernetes.io/version: {{ .Chart.AppVersion }}
-    helm.sh/chart: {{ include "app.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- include "app.labels" . | nindent 4 }}
 data:
   config.yml: |
     {{- include "sanitizedConfig" . | nindent 4 }}

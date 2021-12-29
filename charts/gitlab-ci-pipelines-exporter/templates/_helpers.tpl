@@ -32,6 +32,32 @@ Create chart name and version as used by the chart label.
 {{- end -}}
 
 {{/*
+Common labels
+*/}}
+{{- define "app.labels" -}}
+{{ include "app.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/component: prometheus-exporter
+app.kubernetes.io/part-of: {{ include "app.name" . }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+helm.sh/chart: {{ include "app.chart" . }}
+{{- if .Values.customLabels }}
+{{ toYaml .Values.customLabels }}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Common selector labels
+*/}}
+{{- define "app.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "app.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end -}}
+
+
+{{/*
 Create the name of the service account
 */}}
 {{- define "exporter.serviceAccountName" -}}

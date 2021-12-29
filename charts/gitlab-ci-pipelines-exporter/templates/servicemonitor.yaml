@@ -4,11 +4,7 @@ kind: ServiceMonitor
 metadata:
   name: {{ template "app.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "app.name" . }}
-    app.kubernetes.io/version: {{ .Chart.AppVersion }}
-    helm.sh/chart: {{ include "app.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- include "app.labels" . | nindent 4 }}
 {{ with .Values.serviceMonitor.labels }}{{ toYaml . | indent 4 }}{{ end }}
   {{- with .Values.serviceMonitor.annotations }}
   annotations: {{ toYaml . | nindent 4 }}
@@ -16,13 +12,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "app.name" . }}
-      app.kubernetes.io/version: {{ .Chart.AppVersion }}
-      helm.sh/chart: {{ include "app.chart" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
-      app.kubernetes.io/managed-by: {{ .Release.Service }}
-      helm.sh/from: deploy.{{ include "app.fullname" . }}
-      {{- with .Values.service.labels }}{{ toYaml . | nindent 6 }}{{ end }}
+      {{- include "app.selectorLabels" . | nindent 6 }}
   endpoints:
     - port: http
       interval: {{ .Values.serviceMonitor.scrapeInterval }}
