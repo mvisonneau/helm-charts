@@ -99,6 +99,11 @@ config:
     # TAILSCALE_NETFILTER_MODE: "on"
     # TAILSCALE_SHIELDS_UP: "false"
     # TAILSCALE_SNAT_SUBNET_ROUTES: "true"
+    # TAILSCALED_PORT: "0"
+    # TAILSCALED_SOCKET: "/var/run/tailscale/tailscaled.sock"
+    # TAILSCALED_STATE: "/var/lib/tailscale/tailscaled.state"
+    # TAILSCALED_TUN: "tailscale0"
+    # TAILSCALED_VERBOSE: "0"
 
 # rbac -- If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation.
 rbac:
