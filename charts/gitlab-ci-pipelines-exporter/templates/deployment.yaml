@@ -20,7 +20,6 @@ spec:
     metadata:
       labels:
         {{- include "app.labels" . | nindent 8 }}
-        app.kubernetes.io/managed-by: {{ .Release.Service }}
         helm.sh/from: deploy.{{ include "app.fullname" . }}
 {{ with .Values.podLabels }}{{ toYaml . | indent 8 }}{{ end }}
       annotations:
