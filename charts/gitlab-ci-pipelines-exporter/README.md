@@ -1,6 +1,6 @@
 # gitlab-ci-pipelines-exporter
 
-![Version: 0.2.9](https://img.shields.io/badge/Version-0.2.9-informational?style=flat-square) ![AppVersion: v0.5.2](https://img.shields.io/badge/AppVersion-v0.5.2-informational?style=flat-square)
+![Version: 0.2.12](https://img.shields.io/badge/Version-0.2.12-informational?style=flat-square) ![AppVersion: v0.5.3](https://img.shields.io/badge/AppVersion-v0.5.3-informational?style=flat-square)
 
 Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
@@ -20,7 +20,7 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | redis | 14.6.1 |
+| https://charts.bitnami.com/bitnami | redis | 16.4.0 |
 
 ## Values
 
@@ -31,13 +31,14 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | args | list | `["--config","/etc/config.yml"]` | arguments for the exporter binary |
 | command | list | `["gitlab-ci-pipelines-exporter","run"]` | command for the exporter binary |
 | config | object | `{}` | configuration of the exporter |
+| customLabels | object | `{}` | Custom labels to add into metadata |
 | envVariables | list | `[{"name":"GCPE_INTERNAL_MONITORING_LISTENER_ADDRESS","value":"tcp://127.0.0.1:8082"}]` | environment variables for the container |
 | gitlabSecret | string | `""` | name of a `Secret` containing the GitLab token in the `gitlabToken` field (required unless `config.gitlab.token` is specified) |
 | hostAliases | list | `[]` |  |
 | image.pullCredentials | object | `{}` | Automatically create a secret with the credentials and use it Cannot be used in conjunction of image.pullSecrets |
 | image.pullPolicy | string | `"IfNotPresent"` | image pullPolicy |
 | image.pullSecrets | list | `[]` | Optional array of imagePullSecrets containing private registry credentials Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/ |
-| image.repository | string | `"mvisonneau/gitlab-ci-pipelines-exporter"` | image repository |
+| image.repository | string | `"quay.io/mvisonneau/gitlab-ci-pipelines-exporter"` | image repository |
 | ingress.annotations | string | `nil` | additional annotations for the ingress resource |
 | ingress.enabled | bool | `false` | deploy a ingress to access the exporter pod(s) /webhook endpoint |
 | ingress.hosts | list | `["gcpe.example.com"]` | ingress hosts |

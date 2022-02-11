@@ -6,7 +6,7 @@ replicas: 1
 
 image:
   # image.repository -- image repository
-  repository: mvisonneau/gitlab-ci-pipelines-exporter
+  repository: quay.io/mvisonneau/gitlab-ci-pipelines-exporter
 
   # image.tag -- image tag
   # tag: <default to chart version>
