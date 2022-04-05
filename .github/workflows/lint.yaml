@@ -13,6 +13,10 @@ jobs:
       - name: Fetch history
         run: git fetch --prune --unshallow
 
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
       - name: Set up Helm
         uses: azure/setup-helm@v1
         with:
@@ -47,6 +51,10 @@ jobs:
 
       - name: Fetch history
         run: git fetch --prune --unshallow
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
 
       - name: Set up Helm
         uses: azure/setup-helm@v1
