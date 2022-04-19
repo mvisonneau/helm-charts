@@ -264,7 +264,7 @@ datadog:
 
   # global.datadog.version -- app version
   # version: (default to appVersion + release revision)
-  
+
 ##
 # Global configuration (ideal when embedding this chart within another)
 ##
