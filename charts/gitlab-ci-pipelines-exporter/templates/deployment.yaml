@@ -43,21 +43,21 @@ spec:
           image: {{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
 {{- with .Values.command }}
-          command: {{ toYaml . | nindent 16 }}
+          command: {{ toYaml . | nindent 12 }}
 {{- end }}
 {{- with .Values.args }}
-          args: {{ toYaml . | nindent 16 }}
+          args: {{ toYaml . | nindent 12 }}
 {{- end }}
           env:
 {{- with .Values.envVariables }}
-          {{ toYaml . | nindent 10 }}
+          {{ toYaml . | nindent 12 }}
 {{- end }}
 {{- with .Values.gitlabSecret }}
-          - name: GCPE_GITLAB_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: {{ . }}
-                key: gitlabToken
+            - name: GCPE_GITLAB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ . }}
+                  key: gitlabToken
 {{- end }}
 {{- with .Values.webhookSecret}}
           - name: GCPE_WEBHOOK_SECRET_TOKEN
@@ -78,10 +78,10 @@ spec:
               containerPort: 8080
               protocol: TCP
 {{- with .Values.livenessProbe }}
-          livenessProbe: {{ toYaml . | nindent 16 }}
+          livenessProbe: {{ toYaml . | nindent 12 }}
 {{- end }}
 {{- with .Values.readinessProbe }}
-          readinessProbe: {{ toYaml . | nindent 16 }}
+          readinessProbe: {{ toYaml . | nindent 12 }}
 {{- end }}
 {{- with .Values.resources }}
           resources: {{ toYaml . | nindent 12 }}
