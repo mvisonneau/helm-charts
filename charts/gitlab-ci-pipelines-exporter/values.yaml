@@ -101,6 +101,11 @@ affinity: {}
 securityContext:
   # runAsUser: 65534  # run as nobody user
 
+# containerSecurityContext -- security context to apply to the containers
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context
+containerSecurityContext:
+  # allowPrivilegeEscalation: false
+
 # command -- command for the exporter binary
 command:
   - gitlab-ci-pipelines-exporter
