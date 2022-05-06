@@ -1,6 +1,6 @@
 # gitlab-ci-pipelines-exporter
 
-![Version: 0.2.12](https://img.shields.io/badge/Version-0.2.12-informational?style=flat-square) ![AppVersion: v0.5.3](https://img.shields.io/badge/AppVersion-v0.5.3-informational?style=flat-square)
+![Version: 0.2.14](https://img.shields.io/badge/Version-0.2.14-informational?style=flat-square) ![AppVersion: v0.5.3](https://img.shields.io/badge/AppVersion-v0.5.3-informational?style=flat-square)
 
 Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
@@ -31,6 +31,7 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | args | list | `["--config","/etc/config.yml"]` | arguments for the exporter binary |
 | command | list | `["gitlab-ci-pipelines-exporter","run"]` | command for the exporter binary |
 | config | object | `{}` | configuration of the exporter |
+| containerSecurityContext | string | `nil` | security context to apply to the containers |
 | customLabels | object | `{}` | Custom labels to add into metadata |
 | envVariables | list | `[{"name":"GCPE_INTERNAL_MONITORING_LISTENER_ADDRESS","value":"tcp://127.0.0.1:8082"}]` | environment variables for the container |
 | gitlabSecret | string | `""` | name of a `Secret` containing the GitLab token in the `gitlabToken` field (required unless `config.gitlab.token` is specified) |
