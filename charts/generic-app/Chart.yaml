@@ -2,7 +2,7 @@
 apiVersion: v2
 description: Generic Application Chart
 name: generic-app
-version: 0.0.13
+version: 0.0.14
 appVersion: 0.0.0
 home: https://github.com/mvisonneau/helm-charts
 sources:
