@@ -13,5 +13,5 @@ maintainers:
 dependencies:
   - name: redis
     version: 16.4.0
-    repository: file://./deps/bitnami/redis
+    repository: file://./deps/bitnami/redis/
     condition: redis.enabled
