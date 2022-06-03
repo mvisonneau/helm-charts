@@ -1,2 +1,4 @@
 charts/**/charts
+# https://github.com/mvisonneau/helm-charts/issues/44
+!charts/**/gitlab-ci-pipelines-exporter/deps/bitnami/**/charts
 kubeval
