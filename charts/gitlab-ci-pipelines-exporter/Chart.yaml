@@ -12,6 +12,6 @@ maintainers:
     email: maxime.visonneau@gmail.com
 dependencies:
   - name: redis
-    version: 16.4.0
     repository: file://./deps/bitnami/redis/
+    version: 14.6.0
     condition: redis.enabled
