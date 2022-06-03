@@ -13,5 +13,5 @@ maintainers:
 dependencies:
   - name: redis
     repository: https://raw.githubusercontent.com/bitnami/charts/eb5f9a9513d987b519f0ecd732e7031241c50328/bitnami
-    version: 14.6.0
+    version: 16.4.0
     condition: redis.enabled
