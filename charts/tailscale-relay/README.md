@@ -1,6 +1,6 @@
 # tailscale-relay
 
-![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![AppVersion: v1.24.2](https://img.shields.io/badge/AppVersion-v1.24.2-informational?style=flat-square)
+![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![AppVersion: v1.26.0](https://img.shields.io/badge/AppVersion-v1.26.0-informational?style=flat-square)
 
 Deploy a tailscale relay on top of kubernetes
 
