@@ -25,6 +25,7 @@ spec:
 {{ with .Values.podAnnotations }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       hostNetwork: {{ .Values.hostNetwork }}
+      dnsPolicy: {{ .Values.dnsPolicy }}
       serviceAccountName: {{ template "app.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
@@ -48,6 +49,9 @@ spec:
             - name: exporter
               containerPort: 8080
               protocol: TCP
+          volumeMounts:
+            - name: lib-modules
+              mountPath: /lib/modules
           {{- with .Values.livenessProbe }}
           livenessProbe: {{ toYaml . | nindent 16 }}
           {{- end }}
@@ -60,6 +64,10 @@ spec:
           {{- with .Values.securityContext }}
           securityContext: {{ toYaml . | nindent 16 }}
           {{- end }}
+      volumes:
+        - name: lib-modules
+          hostPath:
+            path: /lib/modules
       {{- with .Values.hostAliases }}
       hostAliases: {{ toYaml . | nindent 8 }}
       {{- end }}

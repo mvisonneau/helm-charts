@@ -1,6 +1,6 @@
 # tailscale-relay
 
-![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![AppVersion: v1.24.2](https://img.shields.io/badge/AppVersion-v1.24.2-informational?style=flat-square)
+![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![AppVersion: v1.24.2](https://img.shields.io/badge/AppVersion-v1.24.2-informational?style=flat-square)
 
 Deploy a tailscale relay on top of kubernetes
 
@@ -24,6 +24,7 @@ Deploy a tailscale relay on top of kubernetes
 | annotations | object | `{}` | Additional annotations to add to all resources  |
 | config.authKey | string | `"foo"` |  |
 | config.variables | object | `{}` |  |
+| dnsPolicy | string | `"ClusterFirst"` |  |
 | hostAliases | object | `{}` | allows you to configure custom host aliases |
 | hostNetwork | bool | `false` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |

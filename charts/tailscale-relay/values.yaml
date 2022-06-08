@@ -17,6 +17,9 @@ hostAliases: {}
       # hostnames:
         # - "kubernetes.default.svc"
 
+# dnsPolicy for the pods
+dnsPolicy: ClusterFirst
+
 # -- Additional labels to add to all resources
 #
 labels: {}
