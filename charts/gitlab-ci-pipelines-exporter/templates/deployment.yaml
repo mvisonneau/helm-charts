@@ -63,11 +63,11 @@ spec:
                   key: gitlabToken
 {{- end }}
 {{- with .Values.webhookSecret}}
-          - name: GCPE_WEBHOOK_SECRET_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: {{ . }}
-                key: webhookToken
+            - name: GCPE_WEBHOOK_SECRET_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ . }}
+                  key: webhookToken
 {{- end }}
           envFrom:
             - secretRef:
