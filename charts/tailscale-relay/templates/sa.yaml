@@ -1,7 +1,10 @@
+# Copyright (c) 2022 Tailscale Inc & AUTHORS All rights reserved.
+# Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
 apiVersion: v1
-kind: Secret
+kind: ServiceAccount
 metadata:
-  name: {{ .Values.rbac.kubeSecretName }}
+  name: {{ template "app.serviceAccountName" . }}
   namespace: {{ .Release.Namespace | quote }}
   labels: {{- include "app.labels" . | nindent 4 }}
     {{- if .Values.labels }}
@@ -10,7 +13,3 @@ metadata:
   {{- if .Values.annotations }}
   annotations: {{- include "common.tplvalues.render" (dict "value" .Values.annotations "context" $) | nindent 4 }}
   {{- end }}
-type: Opaque
-data:
-  AUTH_KEY: {{ .Values.config.authKey | b64enc }}
-

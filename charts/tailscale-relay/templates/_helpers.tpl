@@ -64,10 +64,37 @@ Generate basic annotations
 {{- end }}
 {{- end }}
 
+
 {{- define "app.serviceAccountName" -}}
-{{- if .Values.rbac.enabled -}}
-    {{ default (include "app.fullname" .) .Values.rbac.serviceAccount.name }}
-{{- else -}}
-    {{ default "default" .Values.rbac.serviceAccount.name }}
+    {{ default (include "app.fullname" .) .Values.rbac.serviceAccountName }}
 {{- end -}}
+
+{{- define "app.containerName" -}}
+    {{- if or .Values.sidecar.enabled .Values.userspaceSidecar.enabled -}}
+        "ts-sidecar"
+    {{- else -}}
+        "tailscale"
+    {{- end -}}
+{{- end -}}
+
+{{- define "app.podName" -}}
+    {{- if or .Values.sidecar.enabled .Values.userspaceSidecar.enabled -}}
+        "nginx"
+    {{- else if .Values.subnet.enabled -}}
+        "subnet-router"
+    {{- else -}}
+        "proxy"
+    {{- end -}}
+{{- end -}}
+
+{{- define "app.mode" -}}
+    {{- if and .sidecar.enabled  (not .userspaceSidecar.enabled)  (not .proxy.enabled) (not .subnet.enabled)}}
+        sidecar
+    {{- else if and (not .sidecar.enabled) .userspaceSidecar.enabled  (not .proxy.enabled) (not .subnet.enabled)}}
+        userspaceSidecar
+    {{- else if and (not .sidecar.enabled)  (not .userspaceSidecar.enabled) .proxy.enabled (not .subnet.enabled)}}
+        proxy
+    {{- else if and (not .sidecar.enabled)  (not .userspaceSidecar.enabled)  (not .proxy.enabled) .subnet.enabled}}
+        subnet
+    {{- end }}
 {{- end -}}

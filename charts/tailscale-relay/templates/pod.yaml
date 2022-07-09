@@ -1,0 +1,78 @@
+# Copyright (c) 2022 Tailscale Inc & AUTHORS All rights reserved.
+# Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
+
+{{- if include "app.mode" .Values }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ template "app.podName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels: {{- include "app.labels" . | nindent 4 }}
+    {{- if .Values.labels }}
+    {{- include "common.tplvalues.render" (dict "value" .Values.labels "context" $) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.annotations }}
+  annotations: {{- include "common.tplvalues.render" (dict "value" .Values.annotations "context" $) | nindent 4 }}
+  {{- end }}
+spec:
+  serviceAccountName: {{ template "app.serviceAccountName" . }}
+  {{- if .Values.proxy.enabled }}
+  initContainers:
+    # In order to run as a proxy we need to enable IP Forwarding inside
+    # the container. The `net.ipv4.ip_forward` sysctl is not whitelisted
+    # in Kubelet by default.
+  - name: sysctler
+    image: busybox
+    securityContext:
+      privileged: true
+    command: ["/bin/sh"]
+    args:
+      - -c
+      - sysctl -w net.ipv4.ip_forward=1
+    resources:
+      requests:
+        cpu: 1m
+        memory: 1Mi
+  {{- end }}
+  containers:
+  {{- if or .Values.sidecar.enabled .Values.userspaceSidecar.enabled }}
+  - name: nginx
+    image: nginx
+  {{- end }}
+  - name: {{ template "app.containerName" . }}
+    imagePullPolicy: Always
+    image: "ghcr.io/tailscale/tailscale:latest"
+    env:
+      # Store the state in a k8s secret
+    - name: TS_KUBE_SECRET
+      value: {{ .Values.rbac.kubeSecretName }}
+    - name: TS_USERSPACE
+      value: "false"
+    - name: TS_AUTH_KEY
+      valueFrom:
+        secretKeyRef:
+          name: tailscale-auth
+          key: AUTH_KEY
+          optional: true
+    {{- if .Values.proxy.enabled }}
+    - name: TS_DEST_IP
+      value: {{ .Values.proxy.destinationIP }}
+    {{- end }}
+    {{- if .Values.subnet.enabled }}
+    - name: TS_ROUTES
+      value: {{ .Values.subnet.routes }}
+    {{- end }}
+    securityContext:
+      {{- if or .Values.sidecar.enabled .Values.proxy.enabled }}
+      capabilities:
+        add:
+        - NET_ADMIN
+      {{- else if or .Values.userspaceSidecar.enabled .Values.subnet.enabled }}
+      runAsUser: 1000
+      runAsGroup: 1000
+      {{- end }}
+    {{- with .Values.resources }}
+    resources: {{ toYaml . | nindent 6 }}
+    {{- end }}
+{{- end }}
