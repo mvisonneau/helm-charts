@@ -193,6 +193,9 @@ ingress:
   # ingress.enabled -- deploy a ingress to access the exporter pod(s) /webhook endpoint
   enabled: false
 
+  # ingress.ingressClassName -- ingressClassName to be used instead of the deprecated annotation kubernetes.io/ingress.class
+  ingressClassName: {}
+
   # ingress.annotations -- additional annotations for the ingress resource
   annotations:
     # kubernetes.io/ingress.class: nginx
