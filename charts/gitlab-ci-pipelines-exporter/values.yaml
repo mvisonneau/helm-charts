@@ -220,6 +220,7 @@ ingress:
   tls:
     - hosts:
         - gcpe.example.com
+      secretName: {}
 
 # rbac -- If your kubernetes cluster defined the pod security policy, then you need to enable this part, and define clusterRole based on your situation.
 rbac:

@@ -1,6 +1,6 @@
 # gitlab-ci-pipelines-exporter
 
-![Version: 0.2.16](https://img.shields.io/badge/Version-0.2.16-informational?style=flat-square) ![AppVersion: v0.5.3](https://img.shields.io/badge/AppVersion-v0.5.3-informational?style=flat-square)
+![Version: 0.2.17](https://img.shields.io/badge/Version-0.2.17-informational?style=flat-square) ![AppVersion: v0.5.3](https://img.shields.io/badge/AppVersion-v0.5.3-informational?style=flat-square)
 
 Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
@@ -47,7 +47,7 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 | ingress.path | string | `"/webhook"` | path on the exporter to point the root of the ingress |
 | ingress.pathType | string | `"Prefix"` | pathType for the ingress |
 | ingress.service.port.name | string | `"http"` | service port for the ingress |
-| ingress.tls | list | `[{"hosts":["gcpe.example.com"]}]` | ingress tls hosts config |
+| ingress.tls | list | `[{"hosts":["gcpe.example.com"],"secretName":{}}]` | ingress tls hosts config |
 | labels | object | `{}` | additional labels for the service |
 | livenessProbe.httpGet.path | string | `"/health/live"` |  |
 | livenessProbe.httpGet.port | int | `8080` |  |

@@ -20,8 +20,8 @@ spec:
       {{- range .hosts }}
         - {{ . }}
       {{- end }}
-      {{- if .secretName }}
-      secretName: {{ .secretName }}
+      {{- with .secretName }}
+      secretName: {{ toYaml . }}
       {{- end }}
     {{- end }}
   {{- end }}
