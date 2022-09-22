@@ -938,6 +938,21 @@ entries:
     version: 0.0.1
   tailscale-relay:
   - apiVersion: v2
+    appVersion: v1.30.1
+    created: "2022-09-22T07:53:17.702529034Z"
+    description: Deploy a tailscale relay on top of kubernetes
+    digest: 58bcdc35ef8d9c78dd1d09bd6b97a8b436bae2261150a1050d21ee31023f16ec
+    home: https://github.com/mvisonneau/tailscale-relay-over-k8s
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: tailscale-relay
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/tailscale-relay-over-k8s
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/tailscale-relay-0.1.8/tailscale-relay-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
     appVersion: v1.26.0
     created: "2022-06-08T07:54:46.565472587Z"
     description: Deploy a tailscale relay on top of kubernetes
