@@ -128,6 +128,8 @@ config: {}
   # gitlab:
   #   url: https://gitlab.example.com
   #   token: <your_token>
+  #   enable_health_check: true
+  #   enable_tls_verify: true
   # projects:
   #   - name: foo/project
   #   - name: bar/project
