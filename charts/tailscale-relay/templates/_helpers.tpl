@@ -47,9 +47,6 @@ helm.sh/chart: {{ include "app.chart" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
-app.kubernetes.io/component: tailscale
-app.kubernetes.io/part-of: {{ .Chart.Name }}
-app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- if .Values.labels }}
 {{ toYaml .Values.labels }}
