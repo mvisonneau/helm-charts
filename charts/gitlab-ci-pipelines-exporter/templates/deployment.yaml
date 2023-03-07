@@ -20,7 +20,6 @@ spec:
     metadata:
       labels:
         {{- include "app.labels" . | nindent 8 }}
-        helm.sh/from: deploy.{{ include "app.fullname" . }}
 {{ with .Values.podLabels }}{{ toYaml . | indent 8 }}{{ end }}
       annotations:
         checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
