@@ -22,11 +22,9 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "app.name" . }}
-      helm.sh/from: deploy.{{ include "app.fullname" . }}
   template:
     metadata:
       {{- include "generic.labels" . | nindent 6 }}
-        helm.sh/from: deploy.{{ include "app.fullname" . }}
         {{- include "pods.podLabels" . | nindent 8 }}
       {{- with .Values.pods.podAnnotations }}
       annotations: {{ toYaml . | nindent 8 }}
