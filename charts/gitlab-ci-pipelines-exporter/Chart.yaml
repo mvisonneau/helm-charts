@@ -12,6 +12,6 @@ maintainers:
     email: maxime.visonneau@gmail.com
 dependencies:
   - name: redis
-    version: 16.4.0
+    version: 16.13.2
     repository: https://charts.bitnami.com/bitnami
     condition: redis.enabled
