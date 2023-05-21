@@ -3,6 +3,21 @@ entries:
   approuvez:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2023-05-21T21:43:43.791534162Z"
+    description: CLI helper to obtain live confirmation from people over Slack
+    digest: d7581e850510b7db2ca23aedcf35f65a53677b33c45833b161917dfa893333ba
+    home: https://github.com/mvisonneau/approuvez
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: approuvez
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/approuvez
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/approuvez-0.1.1/approuvez-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2023-05-21T21:18:26.17851899Z"
     description: CLI helper to obtain live confirmation from people over Slack
     digest: 17d1be90756211c8572bca2afe437f40b036955102751a2b828bb589f11cc727
@@ -1558,4 +1573,4 @@ entries:
     urls:
     - https://github.com/mvisonneau/helm-charts/releases/download/unpoller-0.0.1/unpoller-0.0.1.tgz
     version: 0.0.1
-generated: "2023-05-21T21:36:01.028910771Z"
+generated: "2023-05-21T21:43:43.791730761Z"
