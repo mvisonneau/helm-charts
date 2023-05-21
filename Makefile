@@ -1,28 +1,32 @@
-.DEFAULT_GOAL := help
-# https://github.com/instrumenta/kubernetes-json-schema
-KUBEVAL_SCHEMA_VERSION := 1.21.0
-KUBEVAL_SCHEMA_LOCATION := https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/
-CHARTS := $(shell find charts/* -type d -maxdepth 0)
+CHARTS             ?= $(shell find charts/* -type d -maxdepth 0)
+KUBERNETES_VERSION ?= 1.27.2
 
-.PHONY: lint-charts
-lint-charts: ## Lint the charts syntax
-	ct lint --all
+.DEFAULT_GOAL := help
+
+.PHONY: lint
+lint: docs ## Lint the charts syntax
+	pip3 install -r ./.ct/requirements.txt
+	go run github.com/helm/chart-testing/v3/ct@v3.8.0 lint --all --config .ct/ct.yaml
+	git diff --exit-code
+
+.PHONY: test
+test: ## Test installing the charts
+	go run github.com/helm/chart-testing/v3/ct@v3.8.0 install --all --config .ct/ct.yaml
 
 .PHONY: docs
 docs: ## Generate charts docs
-	helm-docs
+	go run github.com/norwoodj/helm-docs/cmd/helm-docs@v1.11.0
 
-.PHONY: lint-kubeval
-lint-kubeval: ## Lint the charts templated kubernetes values
+.PHONY: kubeconform
+kubeconform: ## Lint the charts templated kubernetes values
 	@for chart in $(CHARTS); do \
 		helm dependency build $$chart; \
 		for values in $$chart/tests/*.yaml; do \
-			echo "\nTesting $$values..."; \
+			echo "\ntesting $$values..."; \
 			helm template --values $$values $$chart | \
-			kubeval \
-				--strict \
-				-v $(KUBEVAL_SCHEMA_VERSION) \
-				-s $(KUBEVAL_SCHEMA_LOCATION); \
+			go run github.com/yannh/kubeconform/cmd/kubeconform@v0.6.1 \
+				-strict \
+				-kubernetes-version $(KUBERNETES_VERSION); \
 		done; \
 	done
 

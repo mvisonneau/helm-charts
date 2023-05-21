@@ -2,8 +2,6 @@
 # replicas -- amount of desired pod(s) replica(s)
 replicas: 1
 
-# prefer using .Release.name to assign namespace!  
-
 image:
   # image.repository -- image repository
   repository: mvisonneau/slack-git-compare
@@ -128,7 +126,7 @@ rbac:
   enabled: false
   clusterRole: ""
   # serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
-  serviceAccount: 
+  serviceAccount:
     name: ""
 
 # config -- configuration variables of the app
@@ -157,13 +155,13 @@ config:
   #   owners: [foo,bar]
 
   slack:
-    token: ''
-    signing-secret: ''
+    token: ""
+    signing-secret: ""
 
   log:
     format: json
     level: info
-  
+
   users: []
   # - email: foo@bar.baz
   #   aliases:

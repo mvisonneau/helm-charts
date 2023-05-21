@@ -2,7 +2,7 @@
 # replicas -- amount of desired pod(s) replica(s)
 replicas: 1
 
-# prefer using .Release.name to assign namespace!  
+# prefer using .Release.name to assign namespace!
 
 image:
   # image.repository -- image repository
@@ -21,13 +21,15 @@ image:
 
   # image.pullCredentials -- Automatically create a secret with the credentials and use it
   # Cannot be used in conjunction of image.pullSecrets
-  pullCredentials: {}
+  pullCredentials:
+    {}
     # registry: quay.io
     # username: someone
     # password: sillyness
 
 # -- Custom labels to add into metadata
-customLabels: {}
+customLabels:
+  {}
   # app: gitlab-ci-pipelines-exporter
 
 # labels -- additional labels for the deployment resource
@@ -122,7 +124,8 @@ envVariables:
     value: tcp://127.0.0.1:8082
 
 # config -- configuration of the exporter
-config: {}
+config:
+  {}
   # # Complete configuration syntax reference available here:
   # # https://github.com/mvisonneau/gitlab-ci-pipelines-exporter/blob/master/docs/configuration_syntax.md
   # gitlab:
@@ -144,7 +147,8 @@ gitlabSecret: ""
 # -- name of a `Secret` containing the webhook token in the `webhookToken` field (required unless `config.server.webhook.secret_token` is specified)
 webhookSecret: ""
 
-hostAliases: []
+hostAliases:
+  []
   # - ip: 192.168.0.1
   #   hostnames:
   #     - gitlab.server.com
@@ -211,7 +215,7 @@ ingress:
 
   service:
     port:
-    # ingress.service.port.name -- service port for the ingress
+      # ingress.service.port.name -- service port for the ingress
       name: http
 
   # ingress.hosts -- ingress hosts
@@ -229,5 +233,5 @@ rbac:
   enabled: false
   clusterRole: ""
   # serviceAccount -- default name of serviceAccount is "default" if you don't define the name by yourself
-  serviceAccount: 
+  serviceAccount:
     name: ""

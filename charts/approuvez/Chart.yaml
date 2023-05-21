@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 name: approuvez
-version: 0.0.5
+version: 0.1.0
 appVersion: v0.1.0
 description: CLI helper to obtain live confirmation from people over Slack
 home: https://github.com/mvisonneau/approuvez

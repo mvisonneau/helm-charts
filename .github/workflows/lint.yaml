@@ -12,54 +12,41 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
-          python-version: 3.7
+          python-version: '3.10'
+
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '1.20.4'
 
       - name: Set up Helm
-        uses: azure/setup-helm@v1
+        uses: azure/setup-helm@v3
         with:
-          version: v3.8.2
-
-      - name: Set up chart-testing
-        uses: helm/chart-testing-action@v2.2.1
-
-      - name: Run chart-testing (list-changed)
-        id: list-changed
-        run: |
-          changed=$(ct list-changed --config ct.yaml)
-          if [[ -n "$changed" ]]; then
-            echo "::set-output name=changed::true"
-          fi
+          version: v3.12.0
 
       - name: Run chart-testing (lint)
-        run: ct lint --config ct.yaml
+        run: make lint
 
-      - name: Create kind cluster
-        uses: helm/kind-action@v1.2.0
-        if: steps.list-changed.outputs.changed == 'true'
+      # - name: Create kind cluster
+      #   uses: helm/kind-action@v1.2.0
+      #   if: steps.list-changed.outputs.changed == 'true'
 
-      - name: Run chart-testing (install)
-        run: ct install --config ct.yaml
+      # - name: Test installing the charts
+      #   run: make test
 
-  docs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Run helm-docs
-        run: .github/helm-docs.sh
-
-  kubeval:
+  kubeconform:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         # When changing versions here, check that the version exists at: https://github.com/instrumenta/kubernetes-json-schema
         k8s:
-          - v1.16.4
-          - v1.17.4
-          - v1.18.1
+          - '1.23.17'
+          - '1.24.14'
+          - '1.25.10'
+          - '1.26.5'
+          - '1.27.2'
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2

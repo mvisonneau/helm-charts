@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 name: unpoller
-version: 0.0.1
+version: 0.0.2
 appVersion: 2.1.3
 description: Deploy UniFi Poller
 home: https://unpoller.com
