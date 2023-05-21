@@ -13,7 +13,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "app.name" . }}
-      helm.sh/from: deploy.{{ include "app.fullname" . }}
 {{- with .Values.strategy }}
   strategy: {{ toYaml . | nindent 4 }}
 {{- end }}
