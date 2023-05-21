@@ -61,7 +61,7 @@ spec:
                   name: {{ . }}
                   key: gitlabToken
 {{- end }}
-{{- with .Values.webhookSecret}}
+{{- with .Values.webhookSecret }}
             - name: GCPE_WEBHOOK_SECRET_TOKEN
               valueFrom:
                 secretKeyRef:
