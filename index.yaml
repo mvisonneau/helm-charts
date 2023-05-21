@@ -973,6 +973,21 @@ entries:
   slack-git-compare:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2023-05-21T21:46:32.809825154Z"
+    description: Compare git references within Slack
+    digest: 8905cbd8e3961fa1dd9fe39feb8b2d535c7760c9dfd23d1d2d82e5a7fda66817
+    home: https://github.com/mvisonneau/slack-git-compare
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: slack-git-compare
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/slack-git-compare
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/slack-git-compare-0.0.10/slack-git-compare-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2023-05-21T21:18:26.688834865Z"
     description: Compare git references within Slack
     digest: 1bbc755336dfbe9d53412e19634d53fe71463c730916574b6b042b62f403472f
@@ -1588,4 +1603,4 @@ entries:
     urls:
     - https://github.com/mvisonneau/helm-charts/releases/download/unpoller-0.0.1/unpoller-0.0.1.tgz
     version: 0.0.1
-generated: "2023-05-21T21:46:08.156094388Z"
+generated: "2023-05-21T21:46:32.810024755Z"
