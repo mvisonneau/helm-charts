@@ -38,4 +38,3 @@ As a rule of thumb when updating a chart:
    - `make lint`
    - `make kubeconform`
    - optionally: `make test`
-
