@@ -36,6 +36,10 @@ update-deps: ## Update dependencies of the charts
 		helm dependency update $$chart; \
 	done
 
+.PHONY: configure-deps-repos
+configure-deps-repos: ## Configure dependencies repositories
+	helm repo add bitnami https://charts.bitnami.com/bitnami
+
 .PHONY: help
 help: ## Displays this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
