@@ -3,6 +3,21 @@ entries:
   approuvez:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2023-05-21T21:18:26.17851899Z"
+    description: CLI helper to obtain live confirmation from people over Slack
+    digest: 17d1be90756211c8572bca2afe437f40b036955102751a2b828bb589f11cc727
+    home: https://github.com/mvisonneau/approuvez
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: approuvez
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/approuvez
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/approuvez-0.1.0/approuvez-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2022-06-03T17:46:28.226886137Z"
     description: CLI helper to obtain live confirmation from people over Slack
     digest: 9b012eff797c1b5fad1951adb60f911de9adfa5bf8c847346f8d7acb07f25c90
@@ -47,6 +62,21 @@ entries:
     - https://github.com/mvisonneau/helm-charts/releases/download/approuvez-0.0.1/approuvez-0.0.1.tgz
     version: 0.0.1
   generic-app:
+  - apiVersion: v2
+    appVersion: 0.0.0
+    created: "2023-05-21T21:18:26.333868491Z"
+    description: Generic Application Chart
+    digest: 5cb960f61a23d67711e327cfc2620235128cf212c86e6440b07915526a27990b
+    home: https://github.com/mvisonneau/helm-charts
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: generic-app
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/generic-app
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/generic-app-0.0.16/generic-app-0.0.16.tgz
+    version: 0.0.16
   - apiVersion: v2
     appVersion: 0.0.0
     created: "2022-06-03T17:46:28.34115239Z"
@@ -210,6 +240,26 @@ entries:
     - https://github.com/mvisonneau/helm-charts/releases/download/generic-app-0.0.1/generic-app-0.0.1.tgz
     version: 0.0.1
   gitlab-ci-pipelines-exporter:
+  - apiVersion: v2
+    appVersion: v0.5.4
+    created: "2023-05-21T21:18:26.526032702Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.13.2
+    description: Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
+    digest: 038b45554829642f3e9ee6f4d4f7640fde6c797044763ac776679f00639d8698
+    home: https://github.com/mvisonneau/gitlab-ci-pipelines-exporter
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: gitlab-ci-pipelines-exporter
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/gitlab-ci-pipelines-exporter
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/gitlab-ci-pipelines-exporter-0.2.20/gitlab-ci-pipelines-exporter-0.2.20.tgz
+    version: 0.2.20
   - apiVersion: v2
     appVersion: v0.5.4
     created: "2023-04-20T07:38:58.104331466Z"
@@ -873,6 +923,21 @@ entries:
   slack-git-compare:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2023-05-21T21:18:26.688834865Z"
+    description: Compare git references within Slack
+    digest: 1bbc755336dfbe9d53412e19634d53fe71463c730916574b6b042b62f403472f
+    home: https://github.com/mvisonneau/slack-git-compare
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: slack-git-compare
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/slack-git-compare
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/slack-git-compare-0.0.9/slack-git-compare-0.0.9.tgz
+    version: 0.0.9
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2022-06-03T17:46:28.567718349Z"
     description: Compare git references within Slack
     digest: b1ef49c78a1ceb22ae9a108951e0e98eef75a74b4550c473d634e0250216c2ee
@@ -977,6 +1042,21 @@ entries:
     - https://github.com/mvisonneau/helm-charts/releases/download/slack-git-compare-0.0.1/slack-git-compare-0.0.1.tgz
     version: 0.0.1
   tailscale-relay:
+  - apiVersion: v2
+    appVersion: v1.40.1
+    created: "2023-05-21T21:18:26.87268102Z"
+    description: Deploy a tailscale relay on top of kubernetes
+    digest: 29dd1eed0037fe9d6b3b5d4e1acd2e68d7ca750ff40c17c1f798c7dffc360d59
+    home: https://github.com/mvisonneau/tailscale-relay-over-k8s
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: tailscale-relay
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/tailscale-relay-over-k8s
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/tailscale-relay-0.2.3/tailscale-relay-0.2.3.tgz
+    version: 0.2.3
   - apiVersion: v2
     appVersion: v1.40.1
     created: "2023-05-21T20:04:01.772003115Z"
@@ -1430,6 +1510,21 @@ entries:
   unpoller:
   - apiVersion: v2
     appVersion: 2.1.3
+    created: "2023-05-21T21:18:27.035565782Z"
+    description: Deploy UniFi Poller
+    digest: 9e4f3c17a37238f6c91134de814f774e69c6a8f9f31df9b2425465c05caaeb8c
+    home: https://unpoller.com
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: unpoller
+    sources:
+    - https://unpoller.com
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/unpoller-0.0.2/unpoller-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 2.1.3
     created: "2022-12-19T08:24:55.892097573Z"
     description: Deploy UniFi Poller
     digest: ac01890a5fed0743b76d6cf83a52844f005b6aaa6249e6156115efa9f910b344
@@ -1443,4 +1538,4 @@ entries:
     urls:
     - https://github.com/mvisonneau/helm-charts/releases/download/unpoller-0.0.1/unpoller-0.0.1.tgz
     version: 0.0.1
-generated: "2020-03-09T18:24:55.039559Z"
+generated: "2023-05-21T21:18:27.038357468Z"
