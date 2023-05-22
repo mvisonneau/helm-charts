@@ -1,6 +1,6 @@
 # gitlab-ci-pipelines-exporter
 
-![Version: 0.2.21](https://img.shields.io/badge/Version-0.2.21-informational?style=flat-square) ![AppVersion: v0.5.4](https://img.shields.io/badge/AppVersion-v0.5.4-informational?style=flat-square)
+![Version: 0.2.22](https://img.shields.io/badge/Version-0.2.22-informational?style=flat-square) ![AppVersion: v0.5.5](https://img.shields.io/badge/AppVersion-v0.5.5-informational?style=flat-square)
 
 Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
