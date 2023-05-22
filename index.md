@@ -5,8 +5,11 @@
 ```bash
 ~$ helm repo add mvisonneau https://charts.visonneau.fr/
 ~$ helm repo update
-~$ helm search repo mvisonneau
-NAME                                       CHART VERSION   APP VERSION     DESCRIPTION
-mvisonneau/generic-app                  0.0.1           0.0.0           Generic Application Chart
-mvisonneau/gitlab-ci-pipelines-exporter 0.0.1           0.0.0           Prometheus / OpenMetrics exporter for GitLab CI...
+~$ helm search repo mvisonneau | awk '{print $1}' | tail -n +2
+mvisonneau/approuvez
+mvisonneau/generic-app
+mvisonneau/gitlab-ci-pipelines-exporter
+mvisonneau/slack-git-compare
+mvisonneau/tailscale-relay
+mvisonneau/unpoller
 ```
