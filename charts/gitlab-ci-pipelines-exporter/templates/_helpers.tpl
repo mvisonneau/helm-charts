@@ -107,6 +107,9 @@ gitlab:
   {{- with .maximum_requests_per_second }}
   maximum_requests_per_second: {{ . }}
   {{- end }}
+  {{- with .maximum_jobs_queue_size }}
+  maximum_jobs_queue_size: {{ . }}
+  {{- end }}
 
 {{- end }}
 {{- with .Values.config.pull }}
