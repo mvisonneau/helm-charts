@@ -27,7 +27,7 @@ spec:
 {{ with .Values.podAnnotations }}{{ toYaml . | indent 8 }}{{ end }}
     spec:
       {{- if .Values.rbac.enabled }}
-      serviceAccountName: {{ template "exporter.serviceAccountName" . }}
+      serviceAccountName: {{ template "app.serviceAccountName" . }}
       {{- end }}
       {{- if .Values.imagePullCredentials }}
       imagePullSecrets:
