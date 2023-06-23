@@ -162,6 +162,18 @@ serviceMonitor:
   # serviceMonitor.scrapeInterval -- prometheus probes interval
   scrapeInterval: 10s
 
+  # serviceMonitor.scrapeTimeout -- prometheus probes timeout
+  scrapeTimeout: 5s
+
+  # serviceMonitor.params -- prometheus probes params
+  params: {}
+
+  # serviceMonitor.relabelings -- prometheus relabel config
+  relabelings: []
+
+  # serviceMonitor.metricRelabelings -- prometheus metricRelabel config
+  metricRelabelings: []
+
   # serviceMonitor.labels -- additional labels for the service monitor
   labels: {}
 

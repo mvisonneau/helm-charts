@@ -16,4 +16,11 @@ spec:
   endpoints:
     - port: http
       interval: {{ .Values.serviceMonitor.scrapeInterval }}
+      scrapeTimeout: {{ .Values.serviceMonitor.scrapeTimeout }}
+      params:
+        {{- toYaml .Values.serviceMonitor.params | nindent 8 }}
+      relabelings:
+      {{- toYaml .Values.serviceMonitor.relabelings | nindent 8 }}
+      metricRelabelings:
+      {{- toYaml .Values.serviceMonitor.metricRelabelings | nindent 8 }}
 {{- end }}
