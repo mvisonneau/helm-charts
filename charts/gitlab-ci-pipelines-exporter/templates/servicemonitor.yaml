@@ -14,5 +14,5 @@ spec:
     matchLabels:
       {{- include "app.selectorLabels" . | nindent 6 }}
   endpoints:
-    {{- include "app.serviceMonitor.endpoints" . | nindent 4 }}
+    {{- include ".Values.serviceMonitor.endpoints" . | nindent 4 }}
 {{- end }}
