@@ -159,8 +159,10 @@ serviceMonitor:
   # serviceMonitor.enabled -- deploy a serviceMonitor resource
   enabled: false
 
-  # serviceMonitor.scrapeInterval -- prometheus probes interval
-  scrapeInterval: 10s
+  # serviceMonitor.endpoints -- endpoints configuration for the monitor
+  endpoints:
+    - port: http
+      interval: 10s
 
   # serviceMonitor.labels -- additional labels for the service monitor
   labels: {}
