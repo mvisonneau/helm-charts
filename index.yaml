@@ -1208,6 +1208,21 @@ entries:
     version: 0.0.1
   tailscale-relay:
   - apiVersion: v2
+    appVersion: v1.58.2
+    created: "2024-02-06T16:18:03.299709249Z"
+    description: Deploy a tailscale relay on top of kubernetes
+    digest: 76a8b6bde000364f69934fd99871f114d54cbbce236ba5144ccc87f4ff61b235
+    home: https://github.com/mvisonneau/tailscale-relay-over-k8s
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: tailscale-relay
+    sources:
+    - https://github.com/mvisonneau/helm-charts/tree/main/charts/tailscale-relay-over-k8s
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/tailscale-relay-0.2.6/tailscale-relay-0.2.6.tgz
+    version: 0.2.6
+  - apiVersion: v2
     appVersion: v1.56.1
     created: "2024-01-15T12:52:33.449361288Z"
     description: Deploy a tailscale relay on top of kubernetes
@@ -1748,4 +1763,4 @@ entries:
     urls:
     - https://github.com/mvisonneau/helm-charts/releases/download/unpoller-0.0.1/unpoller-0.0.1.tgz
     version: 0.0.1
-generated: "2024-01-15T12:52:33.449658532Z"
+generated: "2024-02-06T16:18:03.300083074Z"
