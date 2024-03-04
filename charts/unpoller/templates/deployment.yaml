@@ -47,7 +47,7 @@ spec:
 {{- end }}
           volumeMounts:
             - name: config
-              mountPath: /etc/unifi-poller/up.conf
+              mountPath: /etc/unpoller/up.conf
               subPath: up.conf
           ports:
             - name: metrics
