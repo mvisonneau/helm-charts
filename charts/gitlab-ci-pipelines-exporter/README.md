@@ -1,6 +1,6 @@
 # gitlab-ci-pipelines-exporter
 
-![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![AppVersion: v0.5.6](https://img.shields.io/badge/AppVersion-v0.5.6-informational?style=flat-square)
+![Version: 0.3.3](https://img.shields.io/badge/Version-0.3.3-informational?style=flat-square) ![AppVersion: v0.5.7](https://img.shields.io/badge/AppVersion-v0.5.7-informational?style=flat-square)
 
 Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
@@ -20,7 +20,7 @@ Prometheus / OpenMetrics exporter for GitLab CI pipelines insights
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | redis | 17.11.3 |
+| https://charts.bitnami.com/bitnami | redis | 18.17.0 |
 
 ## Values
 
