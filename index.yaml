@@ -1739,6 +1739,21 @@ entries:
     version: 0.0.1
   unpoller:
   - apiVersion: v2
+    appVersion: v2.9.2
+    created: "2024-03-04T12:57:41.260245146Z"
+    description: Deploy UniFi Poller
+    digest: 3d74dd45a063545701c7a7002a2ba29eba58067e9de8273260f797fa0cbb6406
+    home: https://unpoller.com
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: unpoller
+    sources:
+    - https://unpoller.com
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/unpoller-0.0.4/unpoller-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: 2.1.3
     created: "2023-05-21T21:47:09.81945584Z"
     description: Deploy UniFi Poller
@@ -1783,4 +1798,4 @@ entries:
     urls:
     - https://github.com/mvisonneau/helm-charts/releases/download/unpoller-0.0.1/unpoller-0.0.1.tgz
     version: 0.0.1
-generated: "2024-02-28T10:49:50.24973577Z"
+generated: "2024-03-04T12:57:41.260429619Z"
