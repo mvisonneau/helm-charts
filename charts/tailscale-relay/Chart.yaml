@@ -1,8 +1,8 @@
 ---
 apiVersion: v2
 name: tailscale-relay
-version: 0.2.6
-appVersion: v1.58.2
+version: 0.2.7
+appVersion: v1.68.1
 description: Deploy a tailscale relay on top of kubernetes
 home: https://github.com/mvisonneau/tailscale-relay-over-k8s
 sources:

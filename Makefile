@@ -15,7 +15,7 @@ test: ## Test installing the charts
 
 .PHONY: docs
 docs: ## Generate charts docs
-	go run github.com/norwoodj/helm-docs/cmd/helm-docs@v1.11.0
+	go run github.com/norwoodj/helm-docs/cmd/helm-docs@v1.13.1
 
 .PHONY: kubeconform
 kubeconform: ## Lint the charts templated kubernetes values
