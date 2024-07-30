@@ -44,6 +44,8 @@ podLabels: {}
 # podAnnotations -- additional annotations for the pods
 podAnnotations: {}
 
+portName: "exporter"
+
 service:
   # type -- service type
   type: ClusterIP
