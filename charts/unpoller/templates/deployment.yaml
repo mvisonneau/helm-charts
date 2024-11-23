@@ -77,4 +77,8 @@ spec:
       volumes:
         - name: config
           secret:
+            {{- if .Values.unpoller.existingSecret }}
+            secretName: {{ .Values.unpoller.existingSecret }}
+            {{- else }}
             secretName: {{ template "app.fullname" . }}-config
+            {{- end }}
