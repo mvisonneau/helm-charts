@@ -1793,6 +1793,24 @@ entries:
     - https://github.com/mvisonneau/helm-charts/releases/download/tailscale-relay-0.0.1/tailscale-relay-0.0.1.tgz
     version: 0.0.1
   unpoller:
+  - annotations:
+      artifacthub.io/changes: |
+        - Add support for existing secrets that contain the unpoller config
+    apiVersion: v2
+    appVersion: v2.9.2
+    created: "2024-11-26T09:53:55.347439221Z"
+    description: Deploy UniFi Poller
+    digest: 640060e6ca010b017a312a7990fd1b16c22ed7b283748230aadd210c34b133e1
+    home: https://unpoller.com
+    maintainers:
+    - email: maxime.visonneau@gmail.com
+      name: mvisonneau
+    name: unpoller
+    sources:
+    - https://unpoller.com
+    urls:
+    - https://github.com/mvisonneau/helm-charts/releases/download/unpoller-0.1.0/unpoller-0.1.0.tgz
+    version: 0.1.0
   - apiVersion: v2
     appVersion: v2.9.2
     created: "2024-03-04T12:57:41.260245146Z"
@@ -1853,4 +1871,4 @@ entries:
     urls:
     - https://github.com/mvisonneau/helm-charts/releases/download/unpoller-0.0.1/unpoller-0.0.1.tgz
     version: 0.0.1
-generated: "2024-06-27T15:40:17.193444557Z"
+generated: "2024-11-26T09:53:55.347643311Z"
