@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 name: unpoller
-version: 0.0.4
+version: 0.1.0
 appVersion: v2.9.2
 description: Deploy UniFi Poller
 home: https://unpoller.com
@@ -10,3 +10,6 @@ sources:
 maintainers:
   - name: mvisonneau
     email: maxime.visonneau@gmail.com
+annotations:
+  artifacthub.io/changes: |
+    - Add support for existing secrets that contain the unpoller config

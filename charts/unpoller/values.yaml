@@ -96,8 +96,10 @@ securityContext: {}
 ## Arguments to append to the command
 # args:
 
-## unpoller.config in TOML format
 unpoller:
+  ## Use an existing Kubernetes secret that contains the unpoller config
+  existingSecret: ""
+  ## Literal unpoller.config in TOML format
   config: |
     # Unpoller v2 primary configuration file. TOML FORMAT #
     ###########################################################
