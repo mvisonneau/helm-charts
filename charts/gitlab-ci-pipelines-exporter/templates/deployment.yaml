@@ -76,7 +76,7 @@ spec:
               mountPath: /etc/config.yml
               subPath: config.yml
           ports:
-            - name: exporter
+            - name: {{- .Values.portName }}
               containerPort: 8080
               protocol: TCP
 {{- with .Values.livenessProbe }}
